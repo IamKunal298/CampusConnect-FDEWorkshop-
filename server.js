@@ -821,12 +821,16 @@ if (fs.existsSync(distPath)) {
   });
 }
 
-app.listen(PORT, () => {
-  console.log(`🚀 Campus Connect API server running on http://localhost:${PORT}`);
-  console.log(`📡 Endpoints available:`);
-  console.log(`   GET    /api/events`);
-  console.log(`   GET    /api/events/:id`);
-  console.log(`   POST   /api/registrations (201 / 409)`);
-  console.log(`   GET    /api/me/registrations`);
-  console.log(`   GET    /api/events/:id/registrations (Owning organizer only)`);
-});
+if (process.env.NODE_ENV !== 'test') {
+  app.listen(PORT, () => {
+    console.log(`🚀 Campus Connect API server running on http://localhost:${PORT}`);
+    console.log(`📡 Endpoints available:`);
+    console.log(`   GET    /api/events`);
+    console.log(`   GET    /api/events/:id`);
+    console.log(`   POST   /api/registrations (201 / 409)`);
+    console.log(`   GET    /api/me/registrations`);
+    console.log(`   GET    /api/events/:id/registrations (Owning organizer only)`);
+  });
+}
+
+export default app;
