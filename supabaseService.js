@@ -326,8 +326,10 @@ export async function dbGetEventAttendees(eventId, { role, organizerId, email })
 
   if (eventErr || !event) return null;
 
-  // Ownership check
-  const isOwner = role === 'organizer' && (organizerId === event.organiser_id);
+  // Ownership check (supports both 'organizer' and 'organiser' spellings)
+  const isOwner =
+    (role === 'organizer' || role === 'organiser') &&
+    (organizerId === event.organiser_id);
 
   if (!isOwner) {
     const forbiddenErr = new Error('Access Denied: The attendee list is restricted to the owning organizer of this event only.');

@@ -637,8 +637,9 @@ app.get('/api/events/:id/registrations', async (req, res) => {
     });
   }
 
+  const isOrganizerRole = role === 'organizer' || role === 'organiser';
   const isOwningOrganizer =
-    role === 'organizer' &&
+    isOrganizerRole &&
     (requesterId === event.organizerId || requesterEmail === event.organizerEmail.toLowerCase());
 
   // Strict owning organizer enforcement:
