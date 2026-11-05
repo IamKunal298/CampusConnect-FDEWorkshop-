@@ -27,6 +27,29 @@ if (isSupabaseConfigured()) {
 
 export const getSupabase = () => supabaseClient;
 
+// Global set of checked-in registration IDs
+const checkedInRegistrations = new Set();
+
+export const isCheckedIn = (regId) => checkedInRegistrations.has(regId);
+
+export const toggleCheckIn = (regId, status) => {
+  if (status === undefined) {
+    if (checkedInRegistrations.has(regId)) {
+      checkedInRegistrations.delete(regId);
+      return false;
+    } else {
+      checkedInRegistrations.add(regId);
+      return true;
+    }
+  } else if (status) {
+    checkedInRegistrations.add(regId);
+    return true;
+  } else {
+    checkedInRegistrations.delete(regId);
+    return false;
+  }
+};
+
 // Helper to provide nice badges & categories based on event title
 function enrichEventForUI(evt, registrationsCount = 0) {
   const dateObj = evt.timestamp ? new Date(evt.timestamp) : new Date();
@@ -306,7 +329,7 @@ export async function dbGetUserRegistrations(userEmail) {
     id: r.id,
     eventId: r.event?.id,
     ticketCode: `CC-PASS-${r.id.substring(0, 4)}`,
-    checkedIn: false,
+    checkedIn: isCheckedIn(r.id),
     registeredAt: r.createdAt,
     event: enrichEventForUI(r.event || {})
   }));
@@ -377,7 +400,40 @@ export async function dbGetEventAttendees(eventId, { role, organizerId, email })
       phone: 'N/A',
       age: 20,
       registeredAt: a.createdAt,
-      checkedIn: false
+      checkedIn: isCheckedIn(a.id)
     }))
   };
+}
+
+/**
+ * 6. DELETE /api/registrations/:id - Cancel registration
+ */
+export async function dbCancelRegistration(registrationId, userEmail) {
+  if (!isSupabaseConfigured() || !supabaseClient) return null;
+
+  if (userEmail) {
+    const { data: user } = await supabaseClient
+      .from('users')
+      .select('id')
+      .eq('email', userEmail.trim().toLowerCase())
+      .maybeSingle();
+
+    if (user) {
+      const { error } = await supabaseClient
+        .from('registrations')
+        .delete()
+        .eq('id', registrationId)
+        .eq('user_id', user.id);
+      if (error) throw new Error(error.message);
+      return true;
+    }
+  }
+
+  const { error } = await supabaseClient
+    .from('registrations')
+    .delete()
+    .eq('id', registrationId);
+
+  if (error) throw new Error(error.message);
+  return true;
 }

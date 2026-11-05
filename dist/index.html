@@ -1,18 +1,350 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%232563eb'/><text x='50%' y='68%' font-size='60' font-weight='bold' font-family='sans-serif' fill='white' text-anchor='middle'>C</text></svg>" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Campus Connect | Your Campus Life, All in One Place</title>
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
-    <script type="module" crossorigin src="./assets/index-nXvnOsIX.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/index-gAwc93tc.css">
-  </head>
-  <body class="bg-[#f8fafc] text-slate-800 antialiased selection:bg-indigo-500 selection:text-white">
-    <div id="root"></div>
-  </body>
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>Campus Pulse | Explore University Events</title>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            primary: "#3525cd",
+            "primary-container": "#4f46e5",
+            "on-primary": "#ffffff",
+            "on-primary-container": "#dad7ff",
+            "primary-fixed": "#e2dfff",
+            "on-primary-fixed": "#0f0069",
+            secondary: "#9d4300",
+            "secondary-container": "#fd761a",
+            "secondary-fixed": "#ffdbca",
+            "on-secondary-fixed": "#341100",
+            tertiary: "#00505f",
+            "tertiary-container": "#006a7c",
+            "tertiary-fixed": "#acedff",
+            background: "#faf8ff",
+            surface: "#faf8ff",
+            "on-surface": "#131b2e",
+            "on-surface-variant": "#464555",
+            "surface-container-lowest": "#ffffff",
+            "surface-container-low": "#f2f3ff",
+            "surface-container": "#eaedff",
+            "surface-container-high": "#e2e7ff",
+            "surface-container-highest": "#dae2fd",
+            outline: "#777587",
+            "outline-variant": "#c7c4d8",
+            error: "#ba1a1a",
+            "error-container": "#ffdad6"
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif']
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    body { font-family: 'Plus Jakarta Sans', sans-serif; }
+    ::-webkit-scrollbar { display: none; }
+  </style>
+</head>
+<body class="bg-background text-on-surface antialiased min-h-screen flex flex-col">
+
+  <!-- ======================================================== -->
+  <!-- Top Navigation Bar (Shared Across All Pages)              -->
+  <!-- ======================================================== -->
+  <header class="fixed top-0 w-full z-50 bg-surface/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] border-b border-outline-variant/30">
+    <div class="h-16 max-w-[1320px] mx-auto px-4 md:px-8 flex items-center justify-between gap-4">
+      
+      <!-- Brand Logo -->
+      <a href="index.html" class="flex items-center gap-3 group">
+        <div class="w-9 h-9 rounded-xl bg-primary-container text-white flex items-center justify-center font-bold shadow-md group-hover:scale-105 transition-transform">
+          <span class="material-symbols-outlined text-[22px]">hub</span>
+        </div>
+        <div class="flex flex-col">
+          <span class="font-bold text-lg text-primary tracking-tight leading-none">Campus Pulse</span>
+          <span class="text-[10px] text-on-surface-variant font-semibold tracking-wider uppercase">Event Manager Hub</span>
+        </div>
+      </a>
+
+      <!-- Search Input -->
+      <div class="hidden md:flex flex-1 max-w-xs mx-4 items-center px-3 py-1.5 rounded-lg bg-surface-container-low text-on-surface-variant gap-2 border border-outline-variant/40 focus-within:ring-2 focus-within:ring-primary focus-within:bg-white transition-all">
+        <span class="material-symbols-outlined text-outline text-[18px]">search</span>
+        <input id="navGlobalSearch" type="text" placeholder="Search events, clubs..." class="bg-transparent text-xs text-on-surface w-full focus:outline-none"/>
+        <kbd class="px-1.5 py-0.5 rounded bg-surface text-[10px] text-outline font-mono shadow-sm">⌘K</kbd>
+      </div>
+
+      <!-- Navigation Links -->
+      <nav class="hidden lg:flex items-center gap-1">
+        <a href="index.html" class="px-3.5 py-2 rounded-lg text-xs font-bold bg-primary-container text-on-primary-container shadow-sm transition-colors">
+          Explore Events
+        </a>
+        <a href="my-registrations.html" class="px-3.5 py-2 rounded-lg text-xs font-semibold text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors">
+          My Registrations
+        </a>
+        <a href="organizer-hub.html" class="px-3.5 py-2 rounded-lg text-xs font-semibold text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors flex items-center gap-1.5">
+          <span class="material-symbols-outlined text-[16px] text-secondary">admin_panel_settings</span>
+          Organizer Hub
+        </a>
+      </nav>
+
+      <!-- Right Controls: Status & User Profile Menu -->
+      <div class="flex items-center gap-3">
+        <!-- Live API Sync Badge -->
+        <div id="liveSyncPill" class="hidden sm:inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-800 text-[11px] font-semibold border border-emerald-200 shadow-sm">
+          <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+          <span>Supabase Synced</span>
+        </div>
+
+        <!-- User Role Switcher Dropdown -->
+        <div class="relative">
+          <button id="navUserMenuBtn" type="button" class="flex items-center gap-2 pl-2 pr-1 py-1 rounded-xl bg-surface-container-low hover:bg-surface-container border border-outline-variant/30 transition-all text-left">
+            <img id="navUserAvatar" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80" alt="Avatar" class="w-7 h-7 rounded-full object-cover ring-2 ring-primary/20"/>
+            <div class="hidden sm:flex flex-col">
+              <span id="navUserName" class="text-xs font-bold text-on-surface leading-tight">Karan Gupta</span>
+              <span id="navUserRole" class="text-[10px] text-on-surface-variant leading-none font-semibold">Student</span>
+            </div>
+            <span class="material-symbols-outlined text-outline text-[18px]">expand_more</span>
+          </button>
+
+          <!-- Dropdown Menu -->
+          <div id="navUserDropdown" class="hidden absolute right-0 mt-2 w-64 bg-surface-container-lowest rounded-xl shadow-2xl border border-outline-variant/40 p-2 z-50">
+            <div class="px-3 py-2 text-[11px] font-bold text-outline uppercase tracking-wider border-b border-outline-variant/30 mb-1">
+              Switch Test Account (Pair Programming)
+            </div>
+            <div id="navUserDropdownList" class="flex flex-col gap-1">
+              <!-- Dynamically populated from DEMO_USERS -->
+            </div>
+            <div class="mt-2 pt-2 border-t border-outline-variant/30 text-[11px] text-on-surface-variant px-3 py-1">
+              ⚡ Automatically updates role permissions across all tabs.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ======================================================== -->
+  <!-- Main Content Area                                        -->
+  <!-- ======================================================== -->
+  <main class="flex-1 pt-16">
+
+    <!-- Top Ambient Glow & Welcome Zone -->
+    <section class="relative overflow-hidden bg-surface-container-low px-4 md:px-8 py-10 border-b border-outline-variant/20">
+      <div class="absolute -top-24 -right-16 w-96 h-96 rounded-full bg-primary-fixed blur-3xl opacity-60 pointer-events-none"></div>
+      <div class="absolute top-1/2 -left-20 w-80 h-80 rounded-full bg-secondary-fixed blur-3xl opacity-40 pointer-events-none"></div>
+      
+      <div class="max-w-[1320px] mx-auto relative z-10 flex flex-col lg:flex-row lg:items-end justify-between gap-8">
+        <div class="space-y-3 max-w-2xl">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface-container-lowest shadow-sm border border-outline-variant/30">
+            <span class="w-2 h-2 rounded-full bg-secondary-container animate-pulse"></span>
+            <span class="text-xs text-secondary font-extrabold tracking-wider uppercase">Live Campus Pulse</span>
+            <span class="text-outline-variant">•</span>
+            <span class="text-xs text-on-surface-variant font-medium">Real-time /api/events</span>
+          </div>
+          <h1 id="welcomeHeroHeading" class="text-3xl md:text-4xl font-extrabold text-on-surface tracking-tight">
+            Hey Karan! What are you getting into this week?
+          </h1>
+          <p class="text-sm md:text-base text-on-surface-variant leading-relaxed">
+            Discover student hackathons, live collegiate sets, engineering design labs, and career mixers verified across campus quad halls.
+          </p>
+        </div>
+
+        <!-- Campus Live Metrics Card Group -->
+        <div class="grid grid-cols-3 gap-3 sm:gap-4 w-full lg:w-auto">
+          <div class="bg-surface-container-lowest p-4 rounded-xl shadow-sm border border-outline-variant/30 flex flex-col justify-between">
+            <div class="flex items-center justify-between text-primary">
+              <span class="text-[11px] font-bold text-on-surface-variant uppercase tracking-wider">UPCOMING</span>
+              <span class="material-symbols-outlined text-[18px]">calendar_month</span>
+            </div>
+            <div class="mt-2">
+              <span id="metricEventsCount" class="text-2xl md:text-3xl font-extrabold text-on-surface tracking-tight">--</span>
+              <span class="block text-xs text-outline font-medium">Campus Events</span>
+            </div>
+          </div>
+
+          <div class="bg-surface-container-lowest p-4 rounded-xl shadow-sm border border-outline-variant/30 flex flex-col justify-between">
+            <div class="flex items-center justify-between text-secondary">
+              <span class="text-[11px] font-bold text-on-surface-variant uppercase tracking-wider">OPEN SEATS</span>
+              <span class="material-symbols-outlined text-[18px]">chair</span>
+            </div>
+            <div class="mt-2">
+              <span id="metricSeatsAvailable" class="text-2xl md:text-3xl font-extrabold text-on-surface tracking-tight">--</span>
+              <span class="block text-xs text-outline font-medium">Total Available</span>
+            </div>
+          </div>
+
+          <div class="bg-primary text-on-primary p-4 rounded-xl shadow-sm border border-primary/20 flex flex-col justify-between">
+            <div class="flex items-center justify-between text-on-primary-container">
+              <span class="text-[11px] font-bold text-primary-fixed uppercase tracking-wider">REGISTERED</span>
+              <span class="material-symbols-outlined text-[18px]">how_to_reg</span>
+            </div>
+            <div class="mt-2">
+              <span id="metricUserPasses" class="text-2xl md:text-3xl font-extrabold text-on-primary tracking-tight">--</span>
+              <span class="block text-xs text-on-primary-container font-medium">My Passes</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sticky Filter Deck & Controls -->
+    <section class="sticky top-16 z-30 bg-surface/95 backdrop-blur-md shadow-sm py-4 px-4 md:px-8 border-b border-outline-variant/20">
+      <div class="max-w-[1320px] mx-auto flex flex-col gap-4">
+        
+        <!-- Search & Quick Filter Controls -->
+        <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+          <div class="relative w-full md:max-w-md">
+            <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-[20px]">search</span>
+            <input id="eventSearchInput" type="text" placeholder="Search keywords, events, speakers..." class="w-full bg-surface-container-low pl-10 pr-12 py-2 rounded-lg text-sm text-on-surface placeholder:text-outline focus:outline-none focus:ring-2 focus:ring-primary shadow-sm border border-outline-variant/40"/>
+            <span class="absolute right-3 top-1/2 -translate-y-1/2 px-1.5 py-0.5 rounded bg-surface text-[10px] text-outline shadow-sm font-mono">⌘K</span>
+          </div>
+
+          <div class="flex items-center gap-2 w-full md:w-auto overflow-x-auto pb-1 md:pb-0">
+            <!-- Date Filter Pills -->
+            <div class="flex items-center bg-surface-container-low p-1 rounded-lg border border-outline-variant/30">
+              <button class="date-filter px-3 py-1 rounded text-xs font-semibold bg-surface text-primary shadow-sm" data-date="all">All Dates</button>
+              <button class="date-filter px-3 py-1 rounded text-xs font-medium text-on-surface-variant hover:text-on-surface" data-date="today">Today</button>
+              <button class="date-filter px-3 py-1 rounded text-xs font-medium text-on-surface-variant hover:text-on-surface" data-date="weekend">This Weekend</button>
+              <button class="date-filter px-3 py-1 rounded text-xs font-medium text-on-surface-variant hover:text-on-surface" data-date="month">This Month</button>
+            </div>
+
+            <!-- Location Dropdown -->
+            <div class="relative">
+              <select id="locationSelect" class="appearance-none bg-surface-container-low pl-3 pr-8 py-1.5 rounded-lg text-xs font-semibold text-on-surface-variant focus:outline-none focus:ring-2 focus:ring-primary shadow-sm border border-outline-variant/30 cursor-pointer">
+                <option value="all">📍 All Campus Venues</option>
+                <option value="Campus Hub">Campus Hub</option>
+                <option value="Engineering Hall">Engineering Hall</option>
+                <option value="Student Commons">Student Commons</option>
+                <option value="Quad Lawn">North Quad Lawn</option>
+              </select>
+              <span class="material-symbols-outlined absolute right-2 top-1/2 -translate-y-1/2 text-outline pointer-events-none text-base">expand_more</span>
+            </div>
+
+            <!-- Open Seats Only Checkbox -->
+            <label class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-surface-container-low border border-outline-variant/30 text-xs font-semibold text-on-surface-variant cursor-pointer select-none">
+              <input id="availableOnlyCheck" type="checkbox" class="w-3.5 h-3.5 rounded text-primary accent-primary"/>
+              <span>Available Only</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Category Filter Pills -->
+        <div class="flex items-center gap-2 overflow-x-auto no-scrollbar py-1">
+          <button class="cat-pill shrink-0 px-4 py-1.5 rounded-full text-xs font-bold bg-primary text-on-primary shadow-sm transition-all" data-category="All">
+            All Events
+          </button>
+          <button class="cat-pill shrink-0 px-4 py-1.5 rounded-full text-xs font-medium bg-surface-container text-on-surface-variant hover:bg-surface-container-high transition-colors" data-category="Tech">
+            Tech &amp; Hackathons
+          </button>
+          <button class="cat-pill shrink-0 px-4 py-1.5 rounded-full text-xs font-medium bg-surface-container text-on-surface-variant hover:bg-surface-container-high transition-colors" data-category="Workshops">
+            Workshops &amp; Labs
+          </button>
+          <button class="cat-pill shrink-0 px-4 py-1.5 rounded-full text-xs font-medium bg-surface-container text-on-surface-variant hover:bg-surface-container-high transition-colors" data-category="Career">
+            Career &amp; Networking
+          </button>
+          <button class="cat-pill shrink-0 px-4 py-1.5 rounded-full text-xs font-medium bg-surface-container text-on-surface-variant hover:bg-surface-container-high transition-colors" data-category="Social">
+            Social &amp; Mixer
+          </button>
+          <button class="cat-pill shrink-0 px-4 py-1.5 rounded-full text-xs font-medium bg-surface-container text-on-surface-variant hover:bg-surface-container-high transition-colors" data-category="Culture">
+            Arts &amp; Culture
+          </button>
+          <button class="cat-pill shrink-0 px-4 py-1.5 rounded-full text-xs font-medium bg-surface-container text-on-surface-variant hover:bg-surface-container-high transition-colors" data-category="Sports">
+            Sports &amp; Rec
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Events Feed Grid Container -->
+    <section class="max-w-[1320px] mx-auto w-full px-4 md:px-8 py-8 flex flex-col gap-6">
+      <div class="flex items-center justify-between pb-2 border-b border-outline-variant/30">
+        <div class="flex items-center gap-3">
+          <h2 class="text-xl font-bold text-on-surface">Curated Feed</h2>
+          <span id="feedMatchesCount" class="px-2.5 py-0.5 rounded-full bg-primary-fixed text-on-primary-fixed text-xs font-extrabold uppercase">
+            Loading...
+          </span>
+        </div>
+        <div class="text-xs text-on-surface-variant flex items-center gap-1.5">
+          <span class="material-symbols-outlined text-[16px] text-emerald-600">bolt</span>
+          <span>Instant RSVP Enabled</span>
+        </div>
+      </div>
+
+      <!-- Events Card Grid -->
+      <div id="eventsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Rendered dynamically by explore.js -->
+      </div>
+    </section>
+  </main>
+
+  <!-- ======================================================== -->
+  <!-- Quick RSVP Slide-Out Drawer                              -->
+  <!-- ======================================================== -->
+  <div id="eventDrawer" class="fixed inset-0 z-50 pointer-events-none opacity-0 transition-opacity duration-300">
+    <div id="drawerBackdrop" class="absolute inset-0 bg-black/40 backdrop-blur-sm pointer-events-auto"></div>
+    <div id="drawerPanel" class="absolute right-0 top-0 bottom-0 w-full max-w-md bg-surface-container-lowest shadow-2xl flex flex-col transform translate-x-full transition-transform duration-300 pointer-events-auto z-10">
+      
+      <!-- Drawer Header -->
+      <div class="p-6 bg-surface-container-low border-b border-outline-variant/30 flex items-center justify-between">
+        <div class="flex items-center gap-2">
+          <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+          <span class="text-xs font-extrabold uppercase tracking-wider text-primary">Fast Lane RSVP</span>
+        </div>
+        <button id="closeDrawerBtn" class="p-1 rounded-full text-outline hover:text-on-surface hover:bg-surface-container transition-colors">
+          <span class="material-symbols-outlined">close</span>
+        </button>
+      </div>
+
+      <!-- Drawer Content -->
+      <div class="flex-1 overflow-y-auto p-6 space-y-6" id="drawerBody">
+        <!-- Dynamically populated -->
+      </div>
+
+      <!-- Drawer Footer -->
+      <div class="p-6 bg-surface-container-low border-t border-outline-variant/30 space-y-3">
+        <button id="drawerConfirmRsvpBtn" class="w-full bg-primary hover:bg-primary-container text-on-primary py-3 px-4 rounded-xl font-bold text-sm transition-all shadow-md flex items-center justify-center gap-2">
+          <span class="material-symbols-outlined text-[18px]">check_circle</span>
+          <span>Confirm Instant RSVP</span>
+        </button>
+        <a id="drawerFullPageLink" href="#" class="block text-center text-xs font-semibold text-primary hover:underline">
+          View Full Event Page &amp; Detailed Schedule &rarr;
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================================================== -->
+  <!-- Footer                                                   -->
+  <!-- ======================================================== -->
+  <footer class="w-full bg-surface-container-lowest mt-12 border-t border-outline-variant/30">
+    <div class="max-w-[1320px] mx-auto px-4 md:px-8 py-8 flex flex-col md:flex-row items-center justify-between gap-6">
+      <div class="flex items-center gap-3">
+        <div class="w-6 h-6 rounded-lg bg-primary text-white flex items-center justify-center font-bold text-xs">
+          CP
+        </div>
+        <span class="font-bold text-sm text-on-surface">Campus Pulse</span>
+        <span class="text-xs text-on-surface-variant border-l border-outline-variant/50 pl-3">University Engagement Portal</span>
+      </div>
+      <div class="flex items-center gap-6 text-xs text-on-surface-variant">
+        <a href="index.html" class="hover:text-primary transition-colors">Explore</a>
+        <a href="my-registrations.html" class="hover:text-primary transition-colors">My Passes</a>
+        <a href="organizer-hub.html" class="hover:text-primary transition-colors">Organizer Hub</a>
+        <a href="https://github.com/IamKunal298/CampusConnect-FDEWorkshop-" target="_blank" class="hover:text-primary transition-colors flex items-center gap-1">
+          <span>GitHub</span>
+          <span class="material-symbols-outlined text-[14px]">open_in_new</span>
+        </a>
+      </div>
+      <div class="text-xs text-outline font-medium">
+        &copy; 2026 Campus Pulse. Production Ready.
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="js/explore.js"></script>
+</body>
 </html>

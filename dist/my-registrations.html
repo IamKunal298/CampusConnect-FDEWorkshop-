@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>My Registrations &amp; Event Passes | Campus Pulse</title>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            primary: "#3525cd",
+            "primary-container": "#4f46e5",
+            "on-primary": "#ffffff",
+            "on-primary-container": "#dad7ff",
+            "primary-fixed": "#e2dfff",
+            "on-primary-fixed": "#0f0069",
+            secondary: "#9d4300",
+            "secondary-container": "#fd761a",
+            "secondary-fixed": "#ffdbca",
+            "on-secondary-fixed": "#341100",
+            tertiary: "#00505f",
+            "tertiary-container": "#006a7c",
+            "tertiary-fixed": "#acedff",
+            background: "#faf8ff",
+            surface: "#faf8ff",
+            "on-surface": "#131b2e",
+            "on-surface-variant": "#464555",
+            "surface-container-lowest": "#ffffff",
+            "surface-container-low": "#f2f3ff",
+            "surface-container": "#eaedff",
+            "surface-container-high": "#e2e7ff",
+            "surface-container-highest": "#dae2fd",
+            outline: "#777587",
+            "outline-variant": "#c7c4d8",
+            error: "#ba1a1a",
+            "error-container": "#ffdad6"
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif']
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    body { font-family: 'Plus Jakarta Sans', sans-serif; }
+    ::-webkit-scrollbar { display: none; }
+  </style>
+</head>
+<body class="bg-background text-on-surface antialiased min-h-screen flex flex-col">
+
+  <!-- ======================================================== -->
+  <!-- Top Navigation Bar                                       -->
+  <!-- ======================================================== -->
+  <header class="fixed top-0 w-full z-50 bg-surface/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] border-b border-outline-variant/30">
+    <div class="h-16 max-w-[1320px] mx-auto px-4 md:px-8 flex items-center justify-between gap-4">
+      <a href="index.html" class="flex items-center gap-3 group">
+        <div class="w-9 h-9 rounded-xl bg-primary-container text-white flex items-center justify-center font-bold shadow-md group-hover:scale-105 transition-transform">
+          <span class="material-symbols-outlined text-[22px]">hub</span>
+        </div>
+        <div class="flex flex-col">
+          <span class="font-bold text-lg text-primary tracking-tight leading-none">Campus Pulse</span>
+          <span class="text-[10px] text-on-surface-variant font-semibold tracking-wider uppercase">Event Manager Hub</span>
+        </div>
+      </a>
+
+      <nav class="hidden lg:flex items-center gap-1">
+        <a href="index.html" class="px-3.5 py-2 rounded-lg text-xs font-semibold text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors">
+          Explore Events
+        </a>
+        <a href="my-registrations.html" class="px-3.5 py-2 rounded-lg text-xs font-bold bg-primary-container text-on-primary-container shadow-sm transition-colors">
+          My Registrations
+        </a>
+        <a href="organizer-hub.html" class="px-3.5 py-2 rounded-lg text-xs font-semibold text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors flex items-center gap-1.5">
+          <span class="material-symbols-outlined text-[16px] text-secondary">admin_panel_settings</span>
+          Organizer Hub
+        </a>
+      </nav>
+
+      <!-- Right Controls: User Profile Menu -->
+      <div class="flex items-center gap-3">
+        <div class="relative">
+          <button id="navUserMenuBtn" type="button" class="flex items-center gap-2 pl-2 pr-1 py-1 rounded-xl bg-surface-container-low hover:bg-surface-container border border-outline-variant/30 transition-all text-left">
+            <img id="navUserAvatar" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80" alt="Avatar" class="w-7 h-7 rounded-full object-cover ring-2 ring-primary/20"/>
+            <div class="hidden sm:flex flex-col">
+              <span id="navUserName" class="text-xs font-bold text-on-surface leading-tight">Karan Gupta</span>
+              <span id="navUserRole" class="text-[10px] text-on-surface-variant leading-none font-semibold">Student</span>
+            </div>
+            <span class="material-symbols-outlined text-outline text-[18px]">expand_more</span>
+          </button>
+
+          <div id="navUserDropdown" class="hidden absolute right-0 mt-2 w-64 bg-surface-container-lowest rounded-xl shadow-2xl border border-outline-variant/40 p-2 z-50">
+            <div class="px-3 py-2 text-[11px] font-bold text-outline uppercase tracking-wider border-b border-outline-variant/30 mb-1">
+              Switch Test Account
+            </div>
+            <div id="navUserDropdownList" class="flex flex-col gap-1"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ======================================================== -->
+  <!-- Main Content Area                                        -->
+  <!-- ======================================================== -->
+  <main class="flex-1 pt-16">
+    <section class="max-w-[1320px] w-full mx-auto px-4 md:px-8 py-10 flex flex-col gap-8">
+      
+      <!-- Header Banner & Tabs -->
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-6 border-b border-outline-variant/30">
+        <div class="flex flex-col gap-2 max-w-2xl">
+          <div class="flex items-center gap-2">
+            <span class="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-surface-container-high text-primary text-[10px] font-bold uppercase tracking-wider">
+              <span class="material-symbols-outlined text-[14px]">confirmation_number</span>
+              STUDENT WALLET
+            </span>
+            <span class="text-[10px] font-mono text-outline tracking-wider uppercase font-semibold">GET /api/me/registrations</span>
+          </div>
+          <h1 class="text-3xl md:text-4xl font-extrabold text-on-surface tracking-tight">My Registered Events</h1>
+          <p class="text-xs md:text-sm text-on-surface-variant leading-relaxed">
+            Manage your verified tickets, check-in QR credentials, and past attendance across university workshops and hackathons.
+          </p>
+        </div>
+
+        <!-- Filter Tab Buttons -->
+        <div class="flex items-center gap-1.5 self-start md:self-auto bg-surface-container-low p-1.5 rounded-xl border border-outline-variant/30 shadow-sm overflow-x-auto">
+          <button id="tabUpcoming" class="tab-btn px-4 py-1.5 rounded-lg text-xs font-bold bg-primary-container text-on-primary-container shadow-sm transition-all" data-tab="upcoming">
+            Upcoming (<span id="countUpcoming">0</span>)
+          </button>
+          <button id="tabAttended" class="tab-btn px-4 py-1.5 rounded-lg text-xs font-semibold text-on-surface-variant hover:text-on-surface transition-all" data-tab="attended">
+            Checked In (<span id="countAttended">0</span>)
+          </button>
+          <button id="tabWaitlist" class="tab-btn px-4 py-1.5 rounded-lg text-xs font-semibold text-on-surface-variant hover:text-on-surface transition-all" data-tab="waitlist">
+            Waitlisted (0)
+          </button>
+        </div>
+      </div>
+
+      <!-- Passes Container -->
+      <div id="passesList" class="flex flex-col gap-6">
+        <!-- Dynamically rendered by passes.js -->
+      </div>
+    </section>
+  </main>
+
+  <!-- ======================================================== -->
+  <!-- Fullscreen Digital Pass Modal                            -->
+  <!-- ======================================================== -->
+  <div id="passModal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden items-center justify-center p-4">
+    <div class="bg-surface-container-lowest rounded-3xl shadow-2xl max-w-md w-full overflow-hidden flex flex-col border border-outline-variant/30 relative">
+      
+      <!-- Top Tear Ribbon -->
+      <div class="p-6 bg-primary text-white flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-white/20 backdrop-blur-md flex items-center justify-center font-bold">
+            <span class="material-symbols-outlined text-[24px]">qr_code_2</span>
+          </div>
+          <div>
+            <span class="text-[10px] font-bold uppercase tracking-wider text-primary-fixed block">Official Campus Pass</span>
+            <h3 id="modalEventTitle" class="text-base font-bold leading-tight">Synthesis AI Summit</h3>
+          </div>
+        </div>
+        <button id="closePassModalBtn" class="p-1.5 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors">
+          <span class="material-symbols-outlined">close</span>
+        </button>
+      </div>
+
+      <!-- Scannable Ticket QR Body -->
+      <div class="p-6 flex flex-col items-center gap-4 text-center">
+        <div id="modalQrCodeContainer" class="p-4 bg-white rounded-2xl shadow-md border border-slate-200">
+          <!-- Vector QR SVG -->
+        </div>
+
+        <div class="space-y-1">
+          <div id="modalTicketCode" class="text-sm font-mono font-extrabold text-primary tracking-wider">CC-PASS-1001</div>
+          <p class="text-[11px] text-on-surface-variant">Present this QR pass at the event entrance scanner station.</p>
+        </div>
+
+        <!-- Student Dossier Strip -->
+        <div class="w-full grid grid-cols-2 gap-2 text-left bg-surface-container-low p-3.5 rounded-xl border border-outline-variant/30 text-xs">
+          <div>
+            <span class="text-[10px] font-bold text-outline uppercase block">Attendee</span>
+            <span id="modalStudentName" class="font-bold text-on-surface block mt-0.5">Karan Gupta</span>
+          </div>
+          <div>
+            <span class="text-[10px] font-bold text-outline uppercase block">Student Email</span>
+            <span id="modalStudentEmail" class="font-mono text-[11px] text-on-surface-variant block mt-0.5 truncate">karan.gupta@campus.edu</span>
+          </div>
+          <div class="pt-2 border-t border-outline-variant/20">
+            <span class="text-[10px] font-bold text-outline uppercase block">Date &amp; Schedule</span>
+            <span id="modalEventDate" class="font-bold text-on-surface block mt-0.5">Nov 12 • 6:30 PM</span>
+          </div>
+          <div class="pt-2 border-t border-outline-variant/20">
+            <span class="text-[10px] font-bold text-outline uppercase block">Campus Venue</span>
+            <span id="modalEventVenue" class="font-bold text-on-surface block mt-0.5">Campus Hub</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Modal Footer -->
+      <div class="p-4 bg-surface-container-low border-t border-outline-variant/30 flex items-center justify-between gap-3">
+        <button id="modalPrintPassBtn" class="flex-1 py-2 px-3 rounded-xl bg-surface-container-highest hover:bg-surface-container text-on-surface text-xs font-bold flex items-center justify-center gap-1.5 transition-colors">
+          <span class="material-symbols-outlined text-[16px]">print</span>
+          <span>Print / Save PDF</span>
+        </button>
+        <button id="modalDoneBtn" class="flex-1 py-2 px-3 rounded-xl bg-primary hover:bg-primary-container text-on-primary text-xs font-bold transition-colors">
+          Done
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="w-full bg-surface-container-lowest mt-12 border-t border-outline-variant/30">
+    <div class="max-w-[1320px] mx-auto px-4 md:px-8 py-8 flex flex-col md:flex-row items-center justify-between gap-6">
+      <div class="flex items-center gap-3">
+        <div class="w-6 h-6 rounded-lg bg-primary text-white flex items-center justify-center font-bold text-xs">CP</div>
+        <span class="font-bold text-sm text-on-surface">Campus Pulse</span>
+        <span class="text-xs text-on-surface-variant border-l border-outline-variant/50 pl-3">University Engagement Portal</span>
+      </div>
+      <div class="flex items-center gap-6 text-xs text-on-surface-variant">
+        <a href="index.html" class="hover:text-primary transition-colors">Explore</a>
+        <a href="my-registrations.html" class="hover:text-primary transition-colors">My Passes</a>
+        <a href="organizer-hub.html" class="hover:text-primary transition-colors">Organizer Hub</a>
+      </div>
+      <div class="text-xs text-outline font-medium">&copy; 2026 Campus Pulse. Production Ready.</div>
+    </div>
+  </footer>
+
+  <script type="module" src="js/passes.js"></script>
+</body>
+</html>

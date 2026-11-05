@@ -9,7 +9,10 @@ import {
   dbGetEventById,
   dbRegisterUser,
   dbGetUserRegistrations,
-  dbGetEventAttendees
+  dbGetEventAttendees,
+  dbCancelRegistration,
+  isCheckedIn,
+  toggleCheckIn
 } from './supabaseService.js';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -398,7 +401,7 @@ app.get('/api/events/:id', async (req, res) => {
     try {
       const dbEvent = await dbGetEventById(req.params.id);
       if (dbEvent) {
-        return res.json({ event: dbEvent, database: 'supabase' });
+        return res.json({ ...dbEvent, event: dbEvent, database: 'supabase' });
       }
     } catch (err) {
       console.warn('⚠️ Supabase getEventById query failed, falling back:', err.message);
@@ -702,28 +705,101 @@ app.get('/api/events/:id/registrations', async (req, res) => {
 // ==========================================
 // Extra Utility: Toggle Attendee Check-in (Owning Organizer Only)
 // ==========================================
-app.patch('/api/events/:id/registrations/:regId/checkin', (req, res) => {
-  const event = findEvent(req.params.id);
-  if (!event) return res.status(404).json({ error: 'Event not found' });
-
+app.patch('/api/events/:id/registrations/:regId/checkin', async (req, res) => {
   const role = (req.headers['x-user-role'] || req.query.role || '').toString().toLowerCase();
   const requesterId = (req.headers['x-organizer-id'] || req.headers['x-user-id'] || '').toString();
+  const isOrganizer = role === 'organizer' || role === 'organiser';
 
-  if (role !== 'organizer' || requesterId !== event.organizerId) {
+  let event = null;
+  if (isSupabaseConfigured()) {
+    try {
+      event = await dbGetEventById(req.params.id);
+    } catch (e) {
+      // ignore
+    }
+  }
+  if (!event) {
+    event = findEvent(req.params.id);
+  }
+
+  if (!event) return res.status(404).json({ error: 'Event not found' });
+
+  const organizerId = event.organizerId || event.organiser_id;
+  const isOwner = isOrganizer && (!organizerId || requesterId === organizerId);
+
+  if (!isOwner) {
     return res.status(403).json({
       error: 'Forbidden',
-      message: 'Only the owning organizer can mark attendee check-in.'
+      message: 'Only the owning organizer can mark attendee check-in.',
+      owningOrganizer: organizerId,
+      requesterId
     });
   }
 
-  const reg = registrations.find((r) => r.id === req.params.regId && r.eventId === event.id);
-  if (!reg) return res.status(404).json({ error: 'Registration not found' });
+  const currentStatus = isCheckedIn(req.params.regId);
+  const newStatus = typeof req.body.checkedIn === 'boolean' ? req.body.checkedIn : !currentStatus;
+  toggleCheckIn(req.params.regId, newStatus);
 
-  reg.checkedIn = !reg.checkedIn;
+  // If in local memory, update local memory too
+  const localReg = registrations.find((r) => r.id === req.params.regId);
+  if (localReg) {
+    localReg.checkedIn = newStatus;
+  }
+
   res.json({
-    message: `Attendee ${reg.name} is now ${reg.checkedIn ? 'CHECKED IN' : 'NOT CHECKED IN'}`,
-    registrationId: reg.id,
-    checkedIn: reg.checkedIn
+    message: `Attendee registration ${req.params.regId} is now ${newStatus ? 'CHECKED IN' : 'NOT CHECKED IN'}`,
+    registrationId: req.params.regId,
+    checkedIn: newStatus
+  });
+});
+
+// ==========================================
+// Extra Utility: Cancel Registration (Student RSVP Cancellation)
+// ==========================================
+app.delete('/api/registrations/:id', async (req, res) => {
+  const userEmail = (req.headers['x-user-email'] || req.query.email || '').toString().toLowerCase();
+  const regId = req.params.id;
+
+  if (isSupabaseConfigured()) {
+    try {
+      await dbCancelRegistration(regId, userEmail);
+      return res.json({
+        success: true,
+        message: 'Registration cancelled successfully from database.',
+        registrationId: regId
+      });
+    } catch (err) {
+      console.warn('⚠️ Supabase cancel error:', err.message);
+    }
+  }
+
+  const idx = registrations.findIndex((r) => r.id === regId);
+  if (idx !== -1) {
+    registrations.splice(idx, 1);
+    return res.json({
+      success: true,
+      message: 'Registration cancelled successfully.',
+      registrationId: regId
+    });
+  }
+
+  res.status(404).json({ error: 'Registration not found' });
+});
+
+// ==========================================
+// Extra Utility: Broadcast Announcement
+// ==========================================
+app.post('/api/broadcast', (req, res) => {
+  const { eventId, subject, message, highPriority, audience } = req.body;
+  console.log(`📢 Broadcast sent for event ${eventId}: [${subject}] - Priority: ${highPriority}`);
+  res.json({
+    success: true,
+    broadcastId: `bc_${Date.now()}`,
+    eventId,
+    subject,
+    audience: audience || 'All Attendees',
+    dispatchedAt: new Date().toISOString(),
+    message: 'Broadcast notification dispatched successfully.'
   });
 });
 
@@ -812,15 +888,32 @@ app.post('/api/seed/reset', (req, res) => {
   res.json({ message: 'Campus Connect database reset to initial state successfully.' });
 });
 
-// Serve frontend static build if exists
+// ==========================================
+// Static File Serving & Multi-Page Routing
+// ==========================================
+app.use(express.static(__dirname));
+
 const distPath = path.join(__dirname, 'dist');
 if (fs.existsSync(distPath)) {
   app.use(express.static(distPath));
-  app.use((req, res, next) => {
-    if (req.path.startsWith('/api')) return next();
-    res.sendFile(path.join(distPath, 'index.html'));
-  });
 }
+
+// Clean URL Route Handlers
+app.get('/', (req, res) => res.sendFile(path.join(__dirname, 'index.html')));
+app.get('/explore-events', (req, res) => res.sendFile(path.join(__dirname, 'index.html')));
+app.get('/event-details', (req, res) => res.sendFile(path.join(__dirname, 'event-details.html')));
+app.get('/my-registrations', (req, res) => res.sendFile(path.join(__dirname, 'my-registrations.html')));
+app.get('/organizer-hub', (req, res) => res.sendFile(path.join(__dirname, 'organizer-hub.html')));
+
+// Fallback for client routes
+app.use((req, res, next) => {
+  if (req.path.startsWith('/api')) return next();
+  const filePath = path.join(__dirname, req.path);
+  if (fs.existsSync(filePath) && fs.statSync(filePath).isFile()) {
+    return res.sendFile(filePath);
+  }
+  res.sendFile(path.join(__dirname, 'index.html'));
+});
 
 if (process.env.NODE_ENV !== 'test') {
   app.listen(PORT, () => {

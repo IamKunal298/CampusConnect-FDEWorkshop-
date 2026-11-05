@@ -1,0 +1,995 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"secondary-fixed-dim":"#ffb690","inverse-on-surface":"#eef0ff","on-primary-fixed":"#0f0069","on-secondary-fixed-variant":"#783200","primary-fixed-dim":"#c3c0ff","on-surface-variant":"#464555","on-background":"#131b2e","primary":"#3525cd","on-secondary-container":"#5c2400","tertiary-fixed-dim":"#4cd7f6","on-tertiary-fixed":"#001f26","on-primary":"#ffffff","on-surface":"#131b2e","tertiary-container":"#006a7c","primary-container":"#4f46e5","tertiary":"#00505f","on-primary-container":"#dad7ff","surface-container-low":"#f2f3ff","surface-container-high":"#e2e7ff","tertiary-fixed":"#acedff","on-tertiary-fixed-variant":"#004e5c","surface-container-highest":"#dae2fd","secondary-container":"#fd761a","error":"#ba1a1a","outline":"#777587","surface":"#faf8ff","primary-fixed":"#e2dfff","inverse-surface":"#283044","surface-tint":"#4d44e3","on-error":"#ffffff","surface-variant":"#dae2fd","outline-variant":"#c7c4d8","surface-dim":"#d2d9f4","background":"#faf8ff","secondary-fixed":"#ffdbca","surface-container-lowest":"#ffffff","on-secondary-fixed":"#341100","on-tertiary":"#ffffff","on-error-container":"#93000a","on-primary-fixed-variant":"#3323cc","on-tertiary-container":"#93e8ff","error-container":"#ffdad6","secondary":"#9d4300","inverse-primary":"#c3c0ff","surface-bright":"#faf8ff","surface-container":"#eaedff","on-secondary":"#ffffff"},borderRadius:{DEFAULT:"0.25rem",lg:"0.5rem",xl:"0.75rem",full:"9999px"},spacing:{margin:"1.5rem","gutter":"1.5rem","gutter-lg":"2rem","space-xs":"0.25rem","gutter-sm":"1rem","margin-desktop":"3rem","space-lg":"1.5rem","margin-mobile":"1rem","space-md":"1rem","space-sm":"0.5rem","space-xl":"2.5rem"},fontFamily:{"label-caps":["Plus Jakarta Sans"],"display-hero-mobile":["Plus Jakarta Sans"],"label-md":["Plus Jakarta Sans"],"headline-xl":["Plus Jakarta Sans"],"headline-md":["Plus Jakarta Sans"],"body-sm":["Plus Jakarta Sans"],"headline-sm":["Plus Jakarta Sans"],"display-hero":["Plus Jakarta Sans"],"body-md":["Plus Jakarta Sans"],"label-lg":["Plus Jakarta Sans"],"body-lg":["Plus Jakarta Sans"],"headline-lg":["Plus Jakarta Sans"],"headline-xl-mobile":["Plus Jakarta Sans"]},fontSize:{"label-caps":["11px",{lineHeight:"14px",fontWeight:"700"}],"display-hero-mobile":["32px",{lineHeight:"40px",fontWeight:"800"}],"label-md":["12px",{lineHeight:"16px",fontWeight:"600"}],"headline-xl":["36px",{lineHeight:"44px",fontWeight:"700"}],"headline-md":["22px",{lineHeight:"30px",fontWeight:"600"}],"body-sm":["12px",{lineHeight:"18px",fontWeight:"400"}],"headline-sm":["18px",{lineHeight:"26px",fontWeight:"600"}],"display-hero":["48px",{lineHeight:"56px",fontWeight:"800"}],"body-md":["14px",{lineHeight:"22px",fontWeight:"400"}],"label-lg":["14px",{lineHeight:"20px",fontWeight:"600"}],"body-lg":["16px",{lineHeight:"26px",fontWeight:"400"}],"headline-lg":["28px",{lineHeight:"36px",fontWeight:"700"}],"headline-xl-mobile":["26px",{lineHeight:"34px",fontWeight:"700"}]}}}};</script></head><body class="bg-background font-body-md text-on-surface antialiased"><aside class="fixed left-0 top-0 h-full w-64 bg-surface-container-lowest shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-50 flex flex-col py-space-lg"><div class="px-space-lg pb-space-lg flex items-center gap-space-md"><img alt="Campus Pulse Logo" class="h-7 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1XpePNDGy_pRM-7F0lErWZMag_oD1rY14sSNpCv8stuNkl0PVdu7rrlnw97nrOxHtmAdnipZ3nu0YUB5KFTEU2rbkKvrXXxe5A6RURFsWXW5Bv-asj7SxN3PZwgLnukPSYQmuNfy1VHQPY9r8NgkkJjPMxRoIT_aWmHhE3DvE2n1jvoC3v4Vcd6mPu77_KKFiiYutihbXOvrGz5gqMjfBVeJFss6xQauiVAyWp9iv8G3Q"/><span class="font-headline-sm text-headline-sm text-primary font-bold tracking-tight">Hub Admin</span></div><nav class="flex-1 px-space-md flex flex-col gap-space-xs" data-active-classes="bg-primary-container text-on-primary-container font-label-lg rounded-lg"><a class="flex items-center gap-space-md px-space-md py-space-sm rounded-lg font-label-lg text-label-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="organizer-hub" href="#"><span class="material-symbols-outlined text-outline">dashboard</span>Dashboard</a><a class="flex items-center gap-space-md px-space-md py-space-sm rounded-lg font-label-lg text-label-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="manage-events" href="#"><span class="material-symbols-outlined text-outline">event_available</span>Manage Events</a><a aria-current="page" class="flex items-center gap-space-md px-space-md py-space-sm transition-colors bg-primary-container text-on-primary-container font-label-lg rounded-lg" data-path="attendee-roster" href="#"><span class="material-symbols-outlined text-outline">qr_code_scanner</span>Check-In Scanner</a><a class="flex items-center gap-space-md px-space-md py-space-sm rounded-lg font-label-lg text-label-lg text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="broadcasts" href="#"><span class="material-symbols-outlined text-outline">campaign</span>Broadcasts</a></nav><div class="px-space-md pt-space-md"><div class="p-space-md rounded-xl bg-surface-container-low flex flex-col gap-space-xs"><span class="font-label-caps text-label-caps text-secondary font-bold uppercase">Organizer Mode</span><span class="font-body-sm text-body-sm text-on-surface-variant">Robotics Club Admin</span></div></div></aside><div class="pl-64"><header class="fixed top-0 left-64 right-0 h-16 bg-surface/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-40 flex items-center justify-between px-space-lg"><div class="flex items-center gap-space-md"><nav class="flex items-center gap-space-xs" data-active-classes="bg-primary-container text-on-primary-container font-label-lg rounded-lg"><a class="px-space-md py-space-sm rounded-lg font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors" data-path="explore-events" href="#">Student Portal</a><a class="px-space-md py-space-sm rounded-lg font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors" data-path="organizer-hub" href="#">Organizer Hub</a></nav></div><div class="flex items-center gap-space-md"><button aria-label="Notifications" class="relative p-space-xs rounded-full text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" type="button"><span class="material-symbols-outlined">notifications</span><span class="absolute top-1 right-1 w-2.5 h-2.5 rounded-full bg-secondary-container ring-2 ring-surface"></span></button><div class="flex items-center gap-space-sm pl-space-xs"><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCx977HvVsnooKyCmoMSKBqlXGLhShdjR5BRYFNaoWxg1Y9tPqodjOx8iedaseMdE6l3u74Gp0-APAohzSLImiNxLaiTQHKNPPlrIo0uZvJi3rayTEDgTVdXb3KaMacJecWO3dyPvi7BlPngMFty3GthGPlRHc5taCrgCVE2FWGr6g_MHeYubZ-O4sdy_umSGaZJmZacVPWKM4M17IxNdcVK_Xz4T4UzsYfrigOnVGn"/><div class="hidden sm:flex flex-col text-left"><span class="font-label-md text-label-md text-on-surface">Alex Chen</span><span class="font-body-sm text-body-sm text-on-surface-variant">Organizer</span></div></div></div></header><main class="relative pt-16 w-full min-h-screen bg-background"><div class="flex flex-col w-full">
+<!-- Subtle Atmospheric Accent Layer -->
+<div class="relative w-full px-space-md lg:px-margin-desktop py-space-lg max-w-[1400px] mx-auto flex flex-col gap-space-lg">
+<!-- Top System Security Notice & Organizer Banner -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-space-sm p-space-md rounded-xl bg-surface-container-low shadow-sm">
+<div class="flex items-center gap-space-sm flex-wrap">
+<span class="inline-flex items-center justify-center w-7 h-7 rounded-full bg-primary/10 text-primary">
+<span class="material-symbols-outlined text-[18px]">verified_user</span>
+</span>
+<div class="flex items-center gap-space-xs flex-wrap">
+<span class="font-label-caps text-label-caps uppercase tracking-wider text-primary font-bold">Authorized Context:</span>
+<span class="font-label-md text-label-md text-on-surface">Viewing as Owning Organizer (ACM Student Chapter)</span>
+<span class="text-outline-variant hidden sm:inline">•</span>
+<code class="font-label-caps text-label-caps px-space-xs py-0.5 rounded bg-surface-container text-on-surface-variant tracking-normal font-mono">GET /api/events/{id}/registrations</code>
+</div>
+</div>
+<div class="flex items-center gap-space-xs self-start md:self-auto">
+<span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+<span class="font-label-caps text-label-caps text-on-surface-variant font-semibold uppercase tracking-wider">Bearer Auth Valid</span>
+</div>
+</div>
+<!-- Header Section with Event Switcher & Quick Launch QR Station -->
+<div class="flex flex-col lg:flex-row lg:items-end justify-between gap-space-lg">
+<div class="flex flex-col gap-space-xs max-w-2xl">
+<div class="flex items-center gap-space-xs text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px]">terminal</span>
+<span class="font-label-caps text-label-caps tracking-wider uppercase text-secondary font-bold">Organizer Hub Operations</span>
+<span class="text-outline-variant">•</span>
+<span class="font-label-md text-label-md">Roster Control &amp; Verification</span>
+</div>
+<!-- Bespoke Custom Event Switcher Selector -->
+<div class="relative mt-space-xs group">
+<button class="w-full sm:w-auto flex items-center justify-between gap-space-lg px-space-md py-space-sm rounded-xl bg-surface-container-lowest shadow-sm hover:shadow-md transition-all text-left" id="eventSwitcherBtn" type="button">
+<div class="flex items-center gap-space-md">
+<div class="w-10 h-10 rounded-lg bg-primary-container text-on-primary-container flex items-center justify-center font-bold">
+<span class="material-symbols-outlined">code_blocks</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-space-xs">
+<span class="font-headline-sm text-headline-sm text-on-surface font-extrabold tracking-tight">HackSpring 2025: 36h Collegiate Hackathon</span>
+<span class="font-label-caps text-label-caps px-space-xs py-0.5 rounded bg-secondary-fixed text-on-secondary-fixed uppercase">Active</span>
+</div>
+<div class="flex items-center gap-space-sm text-on-surface-variant font-body-sm text-body-sm">
+<span class="font-mono">ID: evt-8429</span>
+<span>•</span>
+<span>starts Mar 28, 2025</span>
+<span>•</span>
+<span>Alumni Grand Hall</span>
+</div>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:text-on-surface transition-colors">unfold_more</span>
+</button>
+</div>
+</div>
+<!-- Quick Check-in Launcher CTA -->
+<div class="flex items-center gap-space-sm flex-wrap">
+<button class="flex items-center gap-space-xs px-space-md py-space-sm rounded-lg bg-surface-container-high text-on-surface hover:bg-surface-container-highest transition-colors font-label-lg text-label-lg shadow-sm" id="broadcastModalBtn" type="button">
+<span class="material-symbols-outlined text-[20px] text-primary">campaign</span>
+<span>Broadcast Notice</span>
+</button>
+<button class="flex items-center gap-space-xs px-space-lg py-space-sm rounded-lg bg-primary text-on-primary hover:bg-primary-container transition-all shadow-md hover:shadow-lg font-label-lg text-label-lg group" id="launchScannerBtn" type="button">
+<span class="material-symbols-outlined text-[20px] group-hover:rotate-12 transition-transform">qr_code_scanner</span>
+<span>Open Day-of Scanner</span>
+<span class="ml-space-xs px-1.5 py-0.5 rounded text-[10px] font-bold bg-white/20 text-white uppercase tracking-wider">Fast Lane</span>
+</button>
+</div>
+</div>
+<!-- Live Event Capacity Banner -->
+<div class="p-space-md rounded-xl bg-surface-container-lowest shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-space-md">
+<div class="flex items-center gap-space-md min-w-[240px]">
+<div class="relative w-12 h-12 flex items-center justify-center">
+<svg class="w-12 h-12 -rotate-90" viewbox="0 0 48 48">
+<circle cx="24" cy="24" fill="none" r="18" stroke="#e2e7ff" stroke-width="4"></circle>
+<circle cx="24" cy="24" fill="none" r="18" stroke="#4f46e5" stroke-dasharray="113.09" stroke-dashoffset="10.17" stroke-linecap="round" stroke-width="4"></circle>
+</svg>
+<span class="absolute font-label-caps text-label-caps text-primary font-bold">91%</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-caps text-label-caps uppercase tracking-wider text-on-surface-variant font-bold">Live Cap Gauge</span>
+<span class="font-headline-sm text-headline-sm text-on-surface font-extrabold leading-tight">182 <span class="font-body-md text-body-md text-on-surface-variant font-normal">/ 200 Registered</span></span>
+</div>
+</div>
+<div class="flex-1 flex flex-col gap-1.5 max-w-xl">
+<div class="flex justify-between items-center text-on-surface-variant font-label-md text-label-md">
+<span>Venue Fire Marshal Limit: 200</span>
+<span class="text-secondary font-bold">18 seats remaining before auto-waitlist</span>
+</div>
+<div class="w-full h-2.5 rounded-full bg-surface-container-high overflow-hidden flex">
+<div class="bg-primary-container h-full transition-all duration-500" style="width: 91%"></div>
+</div>
+</div>
+<div class="flex items-center gap-space-sm pl-space-xs md:pl-0">
+<span class="px-space-sm py-1 rounded-full bg-emerald-50 text-emerald-700 font-label-md text-label-md font-semibold flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>
+          RSVP Open
+        </span>
+<button class="text-primary hover:text-primary-container font-label-md text-label-md underline underline-offset-2" id="capManageBtn">Adjust Limit</button>
+</div>
+</div>
+<!-- Key Metrics Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-space-md">
+<!-- Card 1: Registered -->
+<div class="p-space-lg rounded-xl bg-surface-container-lowest shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
+<div class="flex items-start justify-between">
+<div class="flex flex-col">
+<span class="font-label-caps text-label-caps uppercase tracking-wider text-on-surface-variant font-semibold">Total Registered</span>
+<span class="font-display-hero-mobile text-display-hero-mobile text-on-surface font-black mt-1">182</span>
+</div>
+<div class="p-2 rounded-lg bg-primary-fixed text-on-primary-fixed-variant">
+<span class="material-symbols-outlined text-[24px]">group</span>
+</div>
+</div>
+<div class="mt-space-md pt-space-xs flex items-center justify-between text-on-surface-variant font-body-sm text-body-sm">
+<span class="text-emerald-700 font-bold flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[16px]">arrow_upward</span> +24 today
+          </span>
+<span>91.0% filled</span>
+</div>
+</div>
+<!-- Card 2: Check-In Status -->
+<div class="p-space-lg rounded-xl bg-surface-container-lowest shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
+<div class="flex items-start justify-between">
+<div class="flex flex-col">
+<span class="font-label-caps text-label-caps uppercase tracking-wider text-on-surface-variant font-semibold">Checked-In Ratio</span>
+<span class="font-display-hero-mobile text-display-hero-mobile text-on-surface font-black mt-1">0 <span class="font-headline-sm text-headline-sm text-on-surface-variant font-normal">/ 182</span></span>
+</div>
+<div class="p-2 rounded-lg bg-surface-container-high text-on-surface-variant">
+<span class="material-symbols-outlined text-[24px]">how_to_reg</span>
+</div>
+</div>
+<div class="mt-space-md pt-space-xs flex items-center justify-between text-on-surface-variant font-body-sm text-body-sm">
+<span class="px-2 py-0.5 rounded bg-surface-container font-label-caps text-label-caps text-on-surface-variant font-bold uppercase">Starts Mar 28</span>
+<span>Gates: 08:30 AM</span>
+</div>
+</div>
+<!-- Card 3: Waitlist -->
+<div class="p-space-lg rounded-xl bg-surface-container-lowest shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
+<div class="flex items-start justify-between">
+<div class="flex flex-col">
+<span class="font-label-caps text-label-caps uppercase tracking-wider text-on-surface-variant font-semibold">Waitlist Queue</span>
+<span class="font-display-hero-mobile text-display-hero-mobile text-secondary font-black mt-1">14</span>
+</div>
+<div class="p-2 rounded-lg bg-secondary-fixed text-on-secondary-fixed">
+<span class="material-symbols-outlined text-[24px]">hourglass_top</span>
+</div>
+</div>
+<div class="mt-space-md pt-space-xs flex items-center justify-between text-on-surface-variant font-body-sm text-body-sm">
+<span>Avg Wait: ~3 hrs</span>
+<span class="text-secondary font-semibold cursor-pointer hover:underline" id="viewWaitlistBtn">Audit queue →</span>
+</div>
+</div>
+<!-- Card 4: Dietary Specs -->
+<div class="p-space-lg rounded-xl bg-surface-container-lowest shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
+<div class="flex items-start justify-between">
+<div class="flex flex-col">
+<span class="font-label-caps text-label-caps uppercase tracking-wider text-on-surface-variant font-semibold">Catering Specs</span>
+<div class="flex items-center gap-space-xs mt-1">
+<span class="font-headline-lg text-headline-lg text-on-surface font-extrabold">69</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">with dietary reqs</span>
+</div>
+</div>
+<div class="p-2 rounded-lg bg-tertiary-fixed text-on-tertiary-fixed-variant">
+<span class="material-symbols-outlined text-[24px]">restaurant_menu</span>
+</div>
+</div>
+<div class="mt-space-md pt-space-xs flex flex-wrap gap-1 font-label-caps text-label-caps">
+<span class="px-2 py-0.5 rounded bg-surface-container text-on-surface font-semibold">42 Veg</span>
+<span class="px-2 py-0.5 rounded bg-surface-container text-on-surface font-semibold">18 Halal</span>
+<span class="px-2 py-0.5 rounded bg-surface-container text-on-surface font-semibold">9 Gluten-Free</span>
+</div>
+</div>
+</div>
+<!-- Attendee Roster Control Panel -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden flex flex-col">
+<!-- Toolbar Header -->
+<div class="p-space-lg flex flex-col lg:flex-row lg:items-center justify-between gap-space-md bg-surface-container-lowest">
+<!-- Search & Filter Controls -->
+<div class="flex flex-col md:flex-row items-stretch md:items-center gap-space-sm flex-1">
+<!-- Live Instant Search Bar -->
+<div class="relative flex-1 max-w-lg">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-[20px]">search</span>
+<input class="w-full pl-10 pr-10 py-2.5 rounded-lg bg-surface-container-low text-on-surface placeholder:text-outline font-body-md text-body-md focus:outline-none focus:ring-2 focus:ring-primary focus:bg-surface-container-lowest transition-all" id="rosterSearchInput" placeholder="Search by student name, email, or Student ID..." type="text"/>
+<button class="hidden absolute right-3 top-1/2 -translate-y-1/2 text-outline hover:text-on-surface" id="clearSearchBtn">
+<span class="material-symbols-outlined text-[18px]">cancel</span>
+</button>
+</div>
+<!-- Filter Dropdowns -->
+<div class="flex items-center gap-space-xs flex-wrap">
+<select class="px-space-md py-2.5 rounded-lg bg-surface-container-low text-on-surface font-label-md text-label-md focus:outline-none focus:ring-2 focus:ring-primary cursor-pointer" id="filterTrack">
+<option value="ALL">All Tracks</option>
+<option value="AI / ML">AI / ML</option>
+<option value="Web3 &amp; FinTech">Web3 &amp; FinTech</option>
+<option value="Robotics &amp; IoT">Robotics &amp; IoT</option>
+<option value="HealthTech">HealthTech</option>
+<option value="Open Innovation">Open Innovation</option>
+</select>
+<select class="px-space-md py-2.5 rounded-lg bg-surface-container-low text-on-surface font-label-md text-label-md focus:outline-none focus:ring-2 focus:ring-primary cursor-pointer" id="filterYear">
+<option value="ALL">All Class Years</option>
+<option value="Freshman">Freshman</option>
+<option value="Sophomore">Sophomore</option>
+<option value="Junior">Junior</option>
+<option value="Senior">Senior</option>
+<option value="Grad">Graduate</option>
+</select>
+<select class="px-space-md py-2.5 rounded-lg bg-surface-container-low text-on-surface font-label-md text-label-md focus:outline-none focus:ring-2 focus:ring-primary cursor-pointer" id="filterStatus">
+<option value="ALL">All Statuses</option>
+<option value="Confirmed">Confirmed</option>
+<option value="Check-in Ready">Check-in Ready</option>
+<option value="Checked In">Checked In</option>
+</select>
+</div>
+</div>
+<!-- Action Exports & Bulk Trigger -->
+<div class="flex items-center gap-space-sm self-end lg:self-center">
+<button class="flex items-center gap-space-xs px-space-md py-2.5 rounded-lg bg-surface-container text-on-surface hover:bg-surface-container-high transition-colors font-label-md text-label-md" id="exportCsvBtn" type="button">
+<span class="material-symbols-outlined text-[18px]">file_download</span>
+<span>Export CSV</span>
+</button>
+<div class="h-6 w-[1px] bg-surface-container-high hidden sm:block"></div>
+<span class="font-body-sm text-body-sm text-on-surface-variant hidden" id="selectedCountIndicator">0 selected</span>
+</div>
+</div>
+<!-- Quick Pill Filter Summary Bar -->
+<div class="px-space-lg pb-space-sm flex items-center justify-between gap-space-sm overflow-x-auto text-on-surface-variant font-label-md text-label-md">
+<div class="flex items-center gap-space-xs">
+<span class="font-label-caps text-label-caps uppercase text-outline">Viewing:</span>
+<span class="font-bold text-on-surface" id="showingCount">6 of 182 Attendees</span>
+<span class="text-outline-variant">•</span>
+<span class="text-on-surface-variant">Active Batch: #HACK-25-A</span>
+</div>
+<button class="text-primary hover:underline font-label-md text-label-md hidden" id="resetFiltersBtn">Reset All Filters</button>
+</div>
+<!-- Main Roster Table Container -->
+<div class="overflow-x-auto w-full">
+<table class="w-full text-left text-on-surface font-body-md text-body-md border-collapse">
+<thead>
+<tr class="bg-surface-container-low font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">
+<th class="py-3 px-space-md pl-space-lg w-10" scope="col">
+<input class="w-4 h-4 rounded text-primary focus:ring-primary accent-primary cursor-pointer" id="selectAllCheckbox" type="checkbox"/>
+</th>
+<th class="py-3 px-space-md" scope="col">Student Attendee</th>
+<th class="py-3 px-space-md" scope="col">University Email</th>
+<th class="py-3 px-space-md" scope="col">Student ID</th>
+<th class="py-3 px-space-md" scope="col">Track &amp; Year</th>
+<th class="py-3 px-space-md" scope="col">Registered At</th>
+<th class="py-3 px-space-md" scope="col">Status</th>
+<th class="py-3 px-space-md pr-space-lg text-right" scope="col">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y-0" id="attendeeTableBody">
+<!-- Row 1: Alex Chen -->
+<tr class="attendee-row hover:bg-surface-container-low/60 transition-colors group" data-status="Confirmed" data-track="AI / ML" data-year="Junior">
+<td class="py-3.5 px-space-md pl-space-lg">
+<input class="row-checkbox w-4 h-4 rounded text-primary accent-primary cursor-pointer" type="checkbox"/>
+</td>
+<td class="py-3.5 px-space-md">
+<div class="flex items-center gap-space-sm">
+<div class="w-9 h-9 rounded-full bg-primary-fixed text-on-primary-fixed font-bold flex items-center justify-center text-sm shadow-sm flex-shrink-0">
+                    AC
+                  </div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-lg text-label-lg text-on-surface font-bold truncate">Alex Chen</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px] text-primary">school</span> Computer Science B.S.
+                    </span>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-space-md font-mono text-body-sm text-on-surface-variant">alex.chen@campus.edu</td>
+<td class="py-3.5 px-space-md font-mono font-bold text-on-surface">#90428172</td>
+<td class="py-3.5 px-space-md">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface font-semibold">AI / ML</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Junior (Class of '26)</span>
+</div>
+</td>
+<td class="py-3.5 px-space-md text-on-surface-variant text-body-sm">
+                Mar 14, 2025 <span class="text-outline text-xs block">14:22 EST</span>
+</td>
+<td class="py-3.5 px-space-md">
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-emerald-100/70 text-emerald-800 font-label-caps text-label-caps font-bold">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span> Confirmed
+                </span>
+</td>
+<td class="py-3.5 px-space-md pr-space-lg text-right">
+<div class="flex items-center justify-end gap-1">
+<button class="checkin-btn p-1.5 rounded-lg hover:bg-emerald-50 text-emerald-700 hover:text-emerald-900 transition-colors" data-name="Alex Chen" title="Check In Alex">
+<span class="material-symbols-outlined text-[20px]">how_to_reg</span>
+</button>
+<button class="p-1.5 rounded-lg hover:bg-surface-container text-on-surface-variant hover:text-on-surface transition-colors" onclick="sendTicketPass('Alex Chen')" title="Send Digital Pass">
+<span class="material-symbols-outlined text-[20px]">send</span>
+</button>
+<button class="p-1.5 rounded-lg hover:bg-surface-container text-on-surface-variant hover:text-on-surface transition-colors" onclick="openDetailsModal('Alex Chen', 'alex.chen@campus.edu', '#90428172', 'AI / ML', 'Vegan')" title="View Details">
+<span class="material-symbols-outlined text-[20px]">visibility</span>
+</button>
+<button class="p-1.5 rounded-lg hover:bg-error-container/40 text-error hover:text-on-error-container transition-colors" onclick="revokePass('Alex Chen')" title="Revoke Pass">
+<span class="material-symbols-outlined text-[20px]">person_remove</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 2: Sarah Jenkins -->
+<tr class="attendee-row hover:bg-surface-container-low/60 transition-colors group" data-status="Check-in Ready" data-track="HealthTech" data-year="Senior">
+<td class="py-3.5 px-space-md pl-space-lg">
+<input class="row-checkbox w-4 h-4 rounded text-primary accent-primary cursor-pointer" type="checkbox"/>
+</td>
+<td class="py-3.5 px-space-md">
+<div class="flex items-center gap-space-sm">
+<div class="w-9 h-9 rounded-full bg-secondary-fixed text-on-secondary-fixed font-bold flex items-center justify-center text-sm shadow-sm flex-shrink-0">
+                    SJ
+                  </div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-lg text-label-lg text-on-surface font-bold truncate">Sarah Jenkins</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px] text-secondary">school</span> Biomedical Eng.
+                    </span>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-space-md font-mono text-body-sm text-on-surface-variant">s.jenkins@campus.edu</td>
+<td class="py-3.5 px-space-md font-mono font-bold text-on-surface">#88129031</td>
+<td class="py-3.5 px-space-md">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface font-semibold">HealthTech</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Senior (Class of '25)</span>
+</div>
+</td>
+<td class="py-3.5 px-space-md text-on-surface-variant text-body-sm">
+                Mar 14, 2025 <span class="text-outline text-xs block">15:08 EST</span>
+</td>
+<td class="py-3.5 px-space-md">
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-blue-100 text-blue-800 font-label-caps text-label-caps font-bold">
+<span class="w-1.5 h-1.5 rounded-full bg-blue-600"></span> Check-in Ready
+                </span>
+</td>
+<td class="py-3.5 px-space-md pr-space-lg text-right">
+<div class="flex items-center justify-end gap-1">
+<button class="checkin-btn p-1.5 rounded-lg hover:bg-emerald-50 text-emerald-700 hover:text-emerald-900 transition-colors" data-name="Sarah Jenkins" title="Check In Sarah">
+<span class="material-symbols-outlined text-[20px]">how_to_reg</span>
+</button>
+<button class="p-1.5 rounded-lg hover:bg-surface-container text-on-surface-variant hover:text-on-surface transition-colors" onclick="sendTicketPass('Sarah Jenkins')" title="Send Digital Pass">
+<span class="material-symbols-outlined text-[20px]">send</span>
+</button>
+<button class="p-1.5 rounded-lg hover:bg-surface-container text-on-surface-variant hover:text-on-surface transition-colors" onclick="openDetailsModal('Sarah Jenkins', 's.jenkins@campus.edu', '#88129031', 'HealthTech', 'Gluten-Free')" title="View Details">
+<span class="material-symbols-outlined text-[20px]">visibility</span>
+</button>
+<button class="p-1.5 rounded-lg hover:bg-error-container/40 text-error hover:text-on-error-container transition-colors" onclick="revokePass('Sarah Jenkins')" title="Revoke Pass">
+<span class="material-symbols-outlined text-[20px]">person_remove</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 3: Marcus Vance -->
+<tr class="attendee-row hover:bg-surface-container-low/60 transition-colors group" data-status="Confirmed" data-track="Web3 &amp; FinTech" data-year="Sophomore">
+<td class="py-3.5 px-space-md pl-space-lg">
+<input class="row-checkbox w-4 h-4 rounded text-primary accent-primary cursor-pointer" type="checkbox"/>
+</td>
+<td class="py-3.5 px-space-md">
+<div class="flex items-center gap-space-sm">
+<div class="w-9 h-9 rounded-full bg-tertiary-fixed text-on-tertiary-fixed font-bold flex items-center justify-center text-sm shadow-sm flex-shrink-0">
+                    MV
+                  </div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-lg text-label-lg text-on-surface font-bold truncate">Marcus Vance</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px] text-tertiary">school</span> Economics &amp; Stats
+                    </span>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-space-md font-mono text-body-sm text-on-surface-variant">m.vance@campus.edu</td>
+<td class="py-3.5 px-space-md font-mono font-bold text-on-surface">#91204899</td>
+<td class="py-3.5 px-space-md">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface font-semibold">Web3 &amp; FinTech</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Sophomore (Class of '27)</span>
+</div>
+</td>
+<td class="py-3.5 px-space-md text-on-surface-variant text-body-sm">
+                Mar 14, 2025 <span class="text-outline text-xs block">17:40 EST</span>
+</td>
+<td class="py-3.5 px-space-md">
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-emerald-100/70 text-emerald-800 font-label-caps text-label-caps font-bold">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span> Confirmed
+                </span>
+</td>
+<td class="py-3.5 px-space-md pr-space-lg text-right">
+<div class="flex items-center justify-end gap-1">
+<button class="checkin-btn p-1.5 rounded-lg hover:bg-emerald-50 text-emerald-700 hover:text-emerald-900 transition-colors" data-name="Marcus Vance" title="Check In Marcus">
+<span class="material-symbols-outlined text-[20px]">how_to_reg</span>
+</button>
+<button class="p-1.5 rounded-lg hover:bg-surface-container text-on-surface-variant hover:text-on-surface transition-colors" onclick="sendTicketPass('Marcus Vance')" title="Send Digital Pass">
+<span class="material-symbols-outlined text-[20px]">send</span>
+</button>
+<button class="p-1.5 rounded-lg hover:bg-surface-container text-on-surface-variant hover:text-on-surface transition-colors" onclick="openDetailsModal('Marcus Vance', 'm.vance@campus.edu', '#91204899', 'Web3 &amp; FinTech', 'None')" title="View Details">
+<span class="material-symbols-outlined text-[20px]">visibility</span>
+</button>
+<button class="p-1.5 rounded-lg hover:bg-error-container/40 text-error hover:text-on-error-container transition-colors" onclick="revokePass('Marcus Vance')" title="Revoke Pass">
+<span class="material-symbols-outlined text-[20px]">person_remove</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 4: Priya Patel -->
+<tr class="attendee-row hover:bg-surface-container-low/60 transition-colors group" data-status="Check-in Ready" data-track="AI / ML" data-year="Grad">
+<td class="py-3.5 px-space-md pl-space-lg">
+<input class="row-checkbox w-4 h-4 rounded text-primary accent-primary cursor-pointer" type="checkbox"/>
+</td>
+<td class="py-3.5 px-space-md">
+<div class="flex items-center gap-space-sm">
+<div class="w-9 h-9 rounded-full bg-primary-container text-on-primary font-bold flex items-center justify-center text-sm shadow-sm flex-shrink-0">
+                    PP
+                  </div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-lg text-label-lg text-on-surface font-bold truncate">Priya Patel</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px] text-primary">school</span> Data Science M.S.
+                    </span>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-space-md font-mono text-body-sm text-on-surface-variant">p.patel@campus.edu</td>
+<td class="py-3.5 px-space-md font-mono font-bold text-on-surface">#94019283</td>
+<td class="py-3.5 px-space-md">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface font-semibold">AI / ML</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Graduate (M.S.)</span>
+</div>
+</td>
+<td class="py-3.5 px-space-md text-on-surface-variant text-body-sm">
+                Mar 15, 2025 <span class="text-outline text-xs block">09:12 EST</span>
+</td>
+<td class="py-3.5 px-space-md">
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-blue-100 text-blue-800 font-label-caps text-label-caps font-bold">
+<span class="w-1.5 h-1.5 rounded-full bg-blue-600"></span> Check-in Ready
+                </span>
+</td>
+<td class="py-3.5 px-space-md pr-space-lg text-right">
+<div class="flex items-center justify-end gap-1">
+<button class="checkin-btn p-1.5 rounded-lg hover:bg-emerald-50 text-emerald-700 hover:text-emerald-900 transition-colors" data-name="Priya Patel" title="Check In Priya">
+<span class="material-symbols-outlined text-[20px]">how_to_reg</span>
+</button>
+<button class="p-1.5 rounded-lg hover:bg-surface-container text-on-surface-variant hover:text-on-surface transition-colors" onclick="sendTicketPass('Priya Patel')" title="Send Digital Pass">
+<span class="material-symbols-outlined text-[20px]">send</span>
+</button>
+<button class="p-1.5 rounded-lg hover:bg-surface-container text-on-surface-variant hover:text-on-surface transition-colors" onclick="openDetailsModal('Priya Patel', 'p.patel@campus.edu', '#94019283', 'AI / ML', 'Halal')" title="View Details">
+<span class="material-symbols-outlined text-[20px]">visibility</span>
+</button>
+<button class="p-1.5 rounded-lg hover:bg-error-container/40 text-error hover:text-on-error-container transition-colors" onclick="revokePass('Priya Patel')" title="Revoke Pass">
+<span class="material-symbols-outlined text-[20px]">person_remove</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 5: David Kim -->
+<tr class="attendee-row hover:bg-surface-container-low/60 transition-colors group" data-status="Confirmed" data-track="Robotics &amp; IoT" data-year="Freshman">
+<td class="py-3.5 px-space-md pl-space-lg">
+<input class="row-checkbox w-4 h-4 rounded text-primary accent-primary cursor-pointer" type="checkbox"/>
+</td>
+<td class="py-3.5 px-space-md">
+<div class="flex items-center gap-space-sm">
+<div class="w-9 h-9 rounded-full bg-surface-container-high text-on-surface font-bold flex items-center justify-center text-sm shadow-sm flex-shrink-0">
+                    DK
+                  </div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-lg text-label-lg text-on-surface font-bold truncate">David Kim</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px] text-outline">school</span> Electrical Eng.
+                    </span>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-space-md font-mono text-body-sm text-on-surface-variant">d.kim@campus.edu</td>
+<td class="py-3.5 px-space-md font-mono font-bold text-on-surface">#92551402</td>
+<td class="py-3.5 px-space-md">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface font-semibold">Robotics &amp; IoT</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Freshman (Class of '28)</span>
+</div>
+</td>
+<td class="py-3.5 px-space-md text-on-surface-variant text-body-sm">
+                Mar 15, 2025 <span class="text-outline text-xs block">11:45 EST</span>
+</td>
+<td class="py-3.5 px-space-md">
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-emerald-100/70 text-emerald-800 font-label-caps text-label-caps font-bold">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span> Confirmed
+                </span>
+</td>
+<td class="py-3.5 px-space-md pr-space-lg text-right">
+<div class="flex items-center justify-end gap-1">
+<button class="checkin-btn p-1.5 rounded-lg hover:bg-emerald-50 text-emerald-700 hover:text-emerald-900 transition-colors" data-name="David Kim" title="Check In David">
+<span class="material-symbols-outlined text-[20px]">how_to_reg</span>
+</button>
+<button class="p-1.5 rounded-lg hover:bg-surface-container text-on-surface-variant hover:text-on-surface transition-colors" onclick="sendTicketPass('David Kim')" title="Send Digital Pass">
+<span class="material-symbols-outlined text-[20px]">send</span>
+</button>
+<button class="p-1.5 rounded-lg hover:bg-surface-container text-on-surface-variant hover:text-on-surface transition-colors" onclick="openDetailsModal('David Kim', 'd.kim@campus.edu', '#92551402', 'Robotics &amp; IoT', 'Nut Allergy')" title="View Details">
+<span class="material-symbols-outlined text-[20px]">visibility</span>
+</button>
+<button class="p-1.5 rounded-lg hover:bg-error-container/40 text-error hover:text-on-error-container transition-colors" onclick="revokePass('David Kim')" title="Revoke Pass">
+<span class="material-symbols-outlined text-[20px]">person_remove</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 6: Elena Rostova -->
+<tr class="attendee-row hover:bg-surface-container-low/60 transition-colors group" data-status="Confirmed" data-track="Open Innovation" data-year="Junior">
+<td class="py-3.5 px-space-md pl-space-lg">
+<input class="row-checkbox w-4 h-4 rounded text-primary accent-primary cursor-pointer" type="checkbox"/>
+</td>
+<td class="py-3.5 px-space-md">
+<div class="flex items-center gap-space-sm">
+<div class="w-9 h-9 rounded-full bg-surface-container-highest text-on-surface font-bold flex items-center justify-center text-sm shadow-sm flex-shrink-0">
+                    ER
+                  </div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-lg text-label-lg text-on-surface font-bold truncate">Elena Rostova</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px] text-primary">school</span> Cognitive Science B.S.
+                    </span>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-space-md font-mono text-body-sm text-on-surface-variant">e.rostova@campus.edu</td>
+<td class="py-3.5 px-space-md font-mono font-bold text-on-surface">#90938119</td>
+<td class="py-3.5 px-space-md">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface font-semibold">Open Innovation</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Junior (Class of '26)</span>
+</div>
+</td>
+<td class="py-3.5 px-space-md text-on-surface-variant text-body-sm">
+                Mar 15, 2025 <span class="text-outline text-xs block">13:20 EST</span>
+</td>
+<td class="py-3.5 px-space-md">
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-emerald-100/70 text-emerald-800 font-label-caps text-label-caps font-bold">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span> Confirmed
+                </span>
+</td>
+<td class="py-3.5 px-space-md pr-space-lg text-right">
+<div class="flex items-center justify-end gap-1">
+<button class="checkin-btn p-1.5 rounded-lg hover:bg-emerald-50 text-emerald-700 hover:text-emerald-900 transition-colors" data-name="Elena Rostova" title="Check In Elena">
+<span class="material-symbols-outlined text-[20px]">how_to_reg</span>
+</button>
+<button class="p-1.5 rounded-lg hover:bg-surface-container text-on-surface-variant hover:text-on-surface transition-colors" onclick="sendTicketPass('Elena Rostova')" title="Send Digital Pass">
+<span class="material-symbols-outlined text-[20px]">send</span>
+</button>
+<button class="p-1.5 rounded-lg hover:bg-surface-container text-on-surface-variant hover:text-on-surface transition-colors" onclick="openDetailsModal('Elena Rostova', 'e.rostova@campus.edu', '#90938119', 'Open Innovation', 'Vegetarian')" title="View Details">
+<span class="material-symbols-outlined text-[20px]">visibility</span>
+</button>
+<button class="p-1.5 rounded-lg hover:bg-error-container/40 text-error hover:text-on-error-container transition-colors" onclick="revokePass('Elena Rostova')" title="Revoke Pass">
+<span class="material-symbols-outlined text-[20px]">person_remove</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination and Page Footer -->
+<div class="p-space-md bg-surface-container-low flex flex-col sm:flex-row items-center justify-between gap-space-sm text-on-surface-variant font-label-md text-label-md">
+<div class="flex items-center gap-space-xs">
+<span>Rows per page:</span>
+<select class="bg-surface-container px-2 py-1 rounded text-on-surface font-semibold focus:outline-none">
+<option>25</option>
+<option>50</option>
+<option>100</option>
+</select>
+<span class="text-outline-variant ml-space-xs">•</span>
+<span class="ml-space-xs">Page 1 of 8</span>
+</div>
+<div class="flex items-center gap-space-xs">
+<button class="p-1.5 rounded-lg hover:bg-surface-container text-outline hover:text-on-surface disabled:opacity-40" disabled="">
+<span class="material-symbols-outlined text-[20px]">chevron_left</span>
+</button>
+<span class="px-3 py-1 rounded-md bg-primary text-on-primary font-bold text-xs">1</span>
+<button class="px-3 py-1 rounded-md hover:bg-surface-container text-on-surface font-bold text-xs">2</button>
+<button class="px-3 py-1 rounded-md hover:bg-surface-container text-on-surface font-bold text-xs">3</button>
+<span class="px-1 text-outline">...</span>
+<button class="px-3 py-1 rounded-md hover:bg-surface-container text-on-surface font-bold text-xs">8</button>
+<button class="p-1.5 rounded-lg hover:bg-surface-container text-outline hover:text-on-surface">
+<span class="material-symbols-outlined text-[20px]">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Interactive Day-of Check-In Scanner Modal Overlay -->
+<div class="fixed inset-0 z-50 bg-inverse-surface/60 backdrop-blur-sm hidden flex items-center justify-center p-space-md" id="scannerModal">
+<div class="bg-surface-container-lowest rounded-2xl shadow-2xl max-w-lg w-full overflow-hidden flex flex-col">
+<!-- Modal Header -->
+<div class="p-space-lg bg-surface-container-high flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-xl bg-primary text-on-primary flex items-center justify-center">
+<span class="material-symbols-outlined">qr_code_scanner</span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold">Fast Check-In Scanner</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant font-mono">Stream: Live Optical Feed • Desk 02</span>
+</div>
+</div>
+<button class="p-1.5 rounded-full hover:bg-surface-container-highest text-on-surface-variant" id="closeScannerModal">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<!-- Scanner Viewport Mockup -->
+<div class="p-space-lg flex flex-col items-center gap-space-md">
+<div class="relative w-full aspect-square max-w-xs rounded-xl bg-inverse-surface overflow-hidden flex items-center justify-center">
+<!-- Targeting reticle -->
+<div class="absolute inset-8 border-2 border-primary-fixed-dim/40 rounded-lg flex flex-col justify-between p-2 pointer-events-none">
+<div class="flex justify-between">
+<span class="w-4 h-4 border-t-2 border-l-2 border-primary"></span>
+<span class="w-4 h-4 border-t-2 border-r-2 border-primary"></span>
+</div>
+<!-- Simulated Scanning Beam -->
+<div class="w-full h-0.5 bg-gradient-to-r from-transparent via-tertiary-fixed-dim to-transparent shadow-[0_0_12px_#4cd7f6] animate-pulse"></div>
+<div class="flex justify-between">
+<span class="w-4 h-4 border-b-2 border-l-2 border-primary"></span>
+<span class="w-4 h-4 border-b-2 border-r-2 border-primary"></span>
+</div>
+</div>
+<!-- Camera Feed Simulation Icon -->
+<div class="text-center text-inverse-on-surface/60 flex flex-col items-center gap-2">
+<span class="material-symbols-outlined text-[48px] animate-bounce">center_focus_strong</span>
+<span class="font-label-caps text-label-caps uppercase tracking-wider">Point Camera At Student Wallet Pass</span>
+</div>
+</div>
+<!-- Manual Lookup Fallback in Scanner -->
+<div class="w-full flex gap-space-xs">
+<input class="flex-1 px-space-md py-2 rounded-lg bg-surface-container text-on-surface font-mono text-sm focus:outline-none focus:ring-2 focus:ring-primary" id="manualCodeInput" placeholder="Or enter 8-digit Student ID..." type="text"/>
+<button class="px-space-md py-2 bg-primary text-on-primary rounded-lg font-label-md text-label-md hover:bg-primary-container transition-colors" id="manualValidateBtn">Verify</button>
+</div>
+<div class="hidden w-full p-space-sm rounded-lg bg-emerald-50 text-emerald-800 font-label-md text-label-md flex items-center gap-2" id="scanResultToast">
+<span class="material-symbols-outlined text-emerald-600">check_circle</span>
+<span id="scanResultText">Attendee checked in successfully!</span>
+</div>
+</div>
+<div class="p-space-md bg-surface-container-low flex justify-between items-center font-body-sm text-body-sm text-on-surface-variant">
+<span>Audio Beep on Scan: <strong>Active</strong></span>
+<span class="font-mono text-xs">v2.4.9-kiosk</span>
+</div>
+</div>
+</div>
+<!-- Attendee Details Modal -->
+<div class="fixed inset-0 z-50 bg-inverse-surface/60 backdrop-blur-sm hidden flex items-center justify-center p-space-md" id="detailsModal">
+<div class="bg-surface-container-lowest rounded-2xl shadow-2xl max-w-lg w-full overflow-hidden flex flex-col">
+<div class="p-space-lg bg-surface-container-high flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-primary text-[28px]">badge</span>
+<div>
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold">Attendee Profile</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant block">HackSpring 2025 Registration Dossier</span>
+</div>
+</div>
+<button class="p-1.5 rounded-full hover:bg-surface-container-highest text-on-surface-variant" id="closeDetailsModal">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<div class="p-space-lg flex flex-col gap-space-md" id="detailsContent">
+<div class="flex items-center gap-space-md p-space-md rounded-xl bg-surface-container-low">
+<div class="w-14 h-14 rounded-full bg-primary text-on-primary font-extrabold text-xl flex items-center justify-center shadow-md" id="modalAvatar">
+            AC
+          </div>
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold" id="modalName">Alex Chen</span>
+<span class="font-mono text-body-sm text-on-surface-variant" id="modalEmail">alex.chen@campus.edu</span>
+<span class="font-mono font-bold text-primary text-xs mt-0.5" id="modalId">ID: #90428172</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-space-sm text-body-sm">
+<div class="p-space-sm rounded-lg bg-surface-container">
+<span class="font-label-caps text-label-caps uppercase text-outline block">Selected Track</span>
+<span class="font-label-lg text-label-lg font-bold text-on-surface" id="modalTrack">AI / ML</span>
+</div>
+<div class="p-space-sm rounded-lg bg-surface-container">
+<span class="font-label-caps text-label-caps uppercase text-outline block">Dietary Restrictions</span>
+<span class="font-label-lg text-label-lg font-bold text-secondary" id="modalDiet">Vegan</span>
+</div>
+<div class="p-space-sm rounded-lg bg-surface-container">
+<span class="font-label-caps text-label-caps uppercase text-outline block">Emergency Contact</span>
+<span class="font-label-md text-label-md text-on-surface">+1 (555) 492-0193</span>
+</div>
+<div class="p-space-sm rounded-lg bg-surface-container">
+<span class="font-label-caps text-label-caps uppercase text-outline block">T-Shirt Size</span>
+<span class="font-label-md text-label-md text-on-surface">Unisex Medium</span>
+</div>
+</div>
+<div class="p-space-sm rounded-lg bg-surface-container-low flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">phonelink_ring</span>
+<span class="font-label-md text-label-md text-on-surface">Apple Wallet / GPay Pass</span>
+</div>
+<span class="font-label-caps text-label-caps px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 font-bold uppercase">Issued</span>
+</div>
+</div>
+<div class="p-space-md bg-surface-container-low flex justify-end gap-space-sm">
+<button class="px-space-md py-2 rounded-lg bg-surface-container-highest text-on-surface font-label-md text-label-md hover:bg-surface-container transition-colors" id="modalResendPassBtn">Resend QR Pass</button>
+<button class="px-space-md py-2 rounded-lg bg-primary text-on-primary font-label-md text-label-md hover:bg-primary-container transition-colors" id="modalCloseActionBtn">Done</button>
+</div>
+</div>
+</div>
+<!-- Broadcast Announcement Modal -->
+<div class="fixed inset-0 z-50 bg-inverse-surface/60 backdrop-blur-sm hidden flex items-center justify-center p-space-md" id="broadcastModal">
+<div class="bg-surface-container-lowest rounded-2xl shadow-2xl max-w-lg w-full overflow-hidden flex flex-col">
+<div class="p-space-lg bg-surface-container-high flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-secondary text-[26px]">campaign</span>
+<div>
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold">Broadcast Announcement</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant block">Dispatches SMS &amp; Mobile Push to 182 Attendees</span>
+</div>
+</div>
+<button class="p-1.5 rounded-full hover:bg-surface-container-highest text-on-surface-variant" id="closeBroadcastModal">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<form class="p-space-lg flex flex-col gap-space-md" id="broadcastForm" onsubmit="handleSendBroadcast(event)">
+<div>
+<label class="font-label-caps text-label-caps uppercase text-on-surface-variant block mb-1 font-bold">Audience Scope</label>
+<select class="w-full px-space-md py-2 rounded-lg bg-surface-container text-on-surface font-label-md text-label-md focus:outline-none focus:ring-2 focus:ring-primary">
+<option>All Confirmed Attendees (182)</option>
+<option>Track: AI / ML Only (64)</option>
+<option>Track: Web3 &amp; FinTech Only (38)</option>
+<option>Track: Robotics &amp; HealthTech (52)</option>
+<option>Waitlisted Applicants Only (14)</option>
+</select>
+</div>
+<div>
+<label class="font-label-caps text-label-caps uppercase text-on-surface-variant block mb-1 font-bold">Subject / Title</label>
+<input class="w-full px-space-md py-2 rounded-lg bg-surface-container text-on-surface font-body-md text-body-md focus:outline-none focus:ring-2 focus:ring-primary" placeholder="e.g., Mandatory Check-In Instructions &amp; Wi-Fi Credentials" required="" type="text"/>
+</div>
+<div>
+<label class="font-label-caps text-label-caps uppercase text-on-surface-variant block mb-1 font-bold">Message Content</label>
+<textarea class="w-full px-space-md py-2 rounded-lg bg-surface-container text-on-surface font-body-md text-body-md focus:outline-none focus:ring-2 focus:ring-primary resize-none" placeholder="Type critical announcement details here..." required="" rows="4"></textarea>
+</div>
+<div class="flex items-center gap-2 p-space-sm rounded-lg bg-surface-container-low text-body-sm text-on-surface-variant">
+<input class="w-4 h-4 rounded text-secondary accent-secondary cursor-pointer" id="urgentPushCheck" type="checkbox"/>
+<label class="cursor-pointer select-none" for="urgentPushCheck">Send with High Priority (Bypasses Do Not Disturb on Campus App)</label>
+</div>
+<div class="flex justify-end gap-space-sm pt-space-xs">
+<button class="px-space-md py-2 rounded-lg bg-surface-container text-on-surface font-label-md text-label-md hover:bg-surface-container-high transition-colors" id="cancelBroadcastBtn" type="button">Cancel</button>
+<button class="px-space-lg py-2 rounded-lg bg-secondary-container text-on-secondary-container font-label-lg text-label-lg hover:bg-secondary-fixed-dim transition-colors shadow-sm font-bold flex items-center gap-1.5" type="submit">
+<span class="material-symbols-outlined text-[18px]">send</span>
+            Dispatch Broadcast
+          </button>
+</div>
+</form>
+</div>
+</div>
+<!-- Notification Toast Container -->
+<div class="fixed bottom-6 right-6 z-50 bg-inverse-surface text-inverse-on-surface px-space-lg py-space-sm rounded-xl shadow-xl flex items-center gap-space-sm transform translate-y-24 opacity-0 transition-all duration-300 pointer-events-none" id="toastNotification">
+<span class="material-symbols-outlined text-secondary-fixed" id="toastIcon">info</span>
+<span class="font-label-md text-label-md" id="toastMessage">Action completed successfully.</span>
+</div>
+</div>
+<script>
+  // DOM References
+  const searchInput = document.getElementById('rosterSearchInput');
+  const clearSearchBtn = document.getElementById('clearSearchBtn');
+  const filterTrack = document.getElementById('filterTrack');
+  const filterYear = document.getElementById('filterYear');
+  const filterStatus = document.getElementById('filterStatus');
+  const showingCount = document.getElementById('showingCount');
+  const resetFiltersBtn = document.getElementById('resetFiltersBtn');
+  const rows = document.querySelectorAll('.attendee-row');
+  const selectAllCheckbox = document.getElementById('selectAllCheckbox');
+  const rowCheckboxes = document.querySelectorAll('.row-checkbox');
+  const selectedCountIndicator = document.getElementById('selectedCountIndicator');
+
+  // Modals
+  const scannerModal = document.getElementById('scannerModal');
+  const launchScannerBtn = document.getElementById('launchScannerBtn');
+  const closeScannerModal = document.getElementById('closeScannerModal');
+
+  const detailsModal = document.getElementById('detailsModal');
+  const closeDetailsModal = document.getElementById('closeDetailsModal');
+  const modalCloseActionBtn = document.getElementById('modalCloseActionBtn');
+
+  const broadcastModal = document.getElementById('broadcastModal');
+  const broadcastModalBtn = document.getElementById('broadcastModalBtn');
+  const closeBroadcastModal = document.getElementById('closeBroadcastModal');
+  const cancelBroadcastBtn = document.getElementById('cancelBroadcastBtn');
+
+  // Toast Functionality
+  function showToast(message, icon = 'check_circle') {
+    const toast = document.getElementById('toastNotification');
+    const toastMsg = document.getElementById('toastMessage');
+    const toastIcon = document.getElementById('toastIcon');
+    toastMsg.textContent = message;
+    toastIcon.textContent = icon;
+    toast.classList.remove('translate-y-24', 'opacity-0');
+    toast.classList.add('translate-y-0', 'opacity-100');
+    setTimeout(() => {
+      toast.classList.remove('translate-y-0', 'opacity-100');
+      toast.classList.add('translate-y-24', 'opacity-0');
+    }, 3200);
+  }
+
+  // Filter & Search Logic
+  function applyFilters() {
+    const query = searchInput.value.toLowerCase().trim();
+    const trackVal = filterTrack.value;
+    const yearVal = filterYear.value;
+    const statusVal = filterStatus.value;
+
+    let visibleCount = 0;
+
+    rows.forEach(row => {
+      const text = row.textContent.toLowerCase();
+      const track = row.dataset.track;
+      const year = row.dataset.year;
+      const status = row.dataset.status;
+
+      const matchesSearch = query === '' || text.includes(query);
+      const matchesTrack = trackVal === 'ALL' || track === trackVal;
+      const matchesYear = yearVal === 'ALL' || year === yearVal;
+      const matchesStatus = statusVal === 'ALL' || status === statusVal;
+
+      if (matchesSearch && matchesTrack && matchesYear && matchesStatus) {
+        row.classList.remove('hidden');
+        visibleCount++;
+      } else {
+        row.classList.add('hidden');
+      }
+    });
+
+    showingCount.textContent = `${visibleCount} of 182 Attendees`;
+    
+    // Toggle reset filters visibility
+    const isFiltered = query !== '' || trackVal !== 'ALL' || yearVal !== 'ALL' || statusVal !== 'ALL';
+    if (isFiltered) {
+      resetFiltersBtn.classList.remove('hidden');
+    } else {
+      resetFiltersBtn.classList.add('hidden');
+    }
+
+    if (query !== '') {
+      clearSearchBtn.classList.remove('hidden');
+    } else {
+      clearSearchBtn.classList.add('hidden');
+    }
+  }
+
+  searchInput.addEventListener('input', applyFilters);
+  filterTrack.addEventListener('change', applyFilters);
+  filterYear.addEventListener('change', applyFilters);
+  filterStatus.addEventListener('change', applyFilters);
+
+  clearSearchBtn.addEventListener('click', () => {
+    searchInput.value = '';
+    applyFilters();
+    searchInput.focus();
+  });
+
+  resetFiltersBtn.addEventListener('click', () => {
+    searchInput.value = '';
+    filterTrack.value = 'ALL';
+    filterYear.value = 'ALL';
+    filterStatus.value = 'ALL';
+    applyFilters();
+  });
+
+  // Checkbox Selection Logic
+  selectAllCheckbox.addEventListener('change', (e) => {
+    rowCheckboxes.forEach(cb => {
+      const parentRow = cb.closest('tr');
+      if (!parentRow.classList.contains('hidden')) {
+        cb.checked = e.target.checked;
+      }
+    });
+    updateSelectedCount();
+  });
+
+  rowCheckboxes.forEach(cb => {
+    cb.addEventListener('change', updateSelectedCount);
+  });
+
+  function updateSelectedCount() {
+    let count = 0;
+    rowCheckboxes.forEach(cb => {
+      if (cb.checked) count++;
+    });
+    if (count > 0) {
+      selectedCountIndicator.textContent = `${count} selected`;
+      selectedCountIndicator.classList.remove('hidden');
+    } else {
+      selectedCountIndicator.classList.add('hidden');
+      selectAllCheckbox.checked = false;
+    }
+  }
+
+  // Scanner Modal Trigger
+  launchScannerBtn.addEventListener('click', () => {
+    scannerModal.classList.remove('hidden');
+  });
+
+  closeScannerModal.addEventListener('click', () => {
+    scannerModal.classList.add('hidden');
+    document.getElementById('scanResultToast').classList.add('hidden');
+  });
+
+  // Scanner manual simulation
+  document.getElementById('manualValidateBtn').addEventListener('click', () => {
+    const code = document.getElementById('manualCodeInput').value.trim();
+    if (code) {
+      const toast = document.getElementById('scanResultToast');
+      const text = document.getElementById('scanResultText');
+      text.textContent = `ID ${code} validated. Access Granted!`;
+      toast.classList.remove('hidden');
+      document.getElementById('manualCodeInput').value = '';
+      setTimeout(() => {
+        toast.classList.add('hidden');
+      }, 3500);
+    }
+  });
+
+  // Details Modal Handlers
+  window.openDetailsModal = function(name, email, id, track, diet) {
+    document.getElementById('modalName').textContent = name;
+    document.getElementById('modalEmail').textContent = email;
+    document.getElementById('modalId').textContent = 'ID: ' + id;
+    document.getElementById('modalTrack').textContent = track;
+    document.getElementById('modalDiet').textContent = diet;
+    
+    // Initials avatar
+    const initials = name.split(' ').map(n => n[0]).join('');
+    document.getElementById('modalAvatar').textContent = initials;
+
+    detailsModal.classList.remove('hidden');
+  };
+
+  closeDetailsModal.addEventListener('click', () => detailsModal.classList.add('hidden'));
+  modalCloseActionBtn.addEventListener('click', () => detailsModal.classList.add('hidden'));
+  document.getElementById('modalResendPassBtn').addEventListener('click', () => {
+    showToast('Digital Pass & QR code dispatched to student inbox.');
+    detailsModal.classList.add('hidden');
+  });
+
+  // Broadcast Modal Handlers
+  broadcastModalBtn.addEventListener('click', () => broadcastModal.classList.remove('hidden'));
+  closeBroadcastModal.addEventListener('click', () => broadcastModal.classList.add('hidden'));
+  cancelBroadcastBtn.addEventListener('click', () => broadcastModal.classList.add('hidden'));
+
+  window.handleSendBroadcast = function(e) {
+    e.preventDefault();
+    broadcastModal.classList.add('hidden');
+    showToast('Broadcast published to 182 registered student devices.', 'campaign');
+  };
+
+  // Row inline actions
+  window.sendTicketPass = function(name) {
+    showToast(`Wallet pass re-sent to ${name}.`, 'mark_email_read');
+  };
+
+  window.revokePass = function(name) {
+    if (confirm(`Are you sure you want to revoke the registration for ${name}?`)) {
+      showToast(`Pass for ${name} has been revoked.`, 'person_remove');
+    }
+  };
+
+  // Check-In button click
+  document.querySelectorAll('.checkin-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const name = btn.dataset.name;
+      const row = btn.closest('tr');
+      const statusPill = row.querySelector('[data-status]') || row.children[6].querySelector('span');
+      statusPill.className = 'inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-emerald-700 text-white font-label-caps text-label-caps font-bold';
+      statusPill.innerHTML = '<span class="material-symbols-outlined text-[13px]">check</span> Checked In';
+      btn.disabled = true;
+      btn.classList.add('opacity-30', 'cursor-not-allowed');
+      showToast(`${name} checked in successfully. Badge printing ready.`);
+    });
+  });
+
+  // CSV Export Mock
+  document.getElementById('exportCsvBtn').addEventListener('click', () => {
+    showToast('Generating CSV snapshot: hackspring-2025-roster.csv', 'download');
+  });
+
+  // Switcher and Limit clicks
+  document.getElementById('capManageBtn').addEventListener('click', () => {
+    const newCap = prompt('Enter new maximum capacity for HackSpring 2025:', '200');
+    if (newCap) {
+      showToast(`Capacity adjusted to ${newCap}. Fire code checks cleared.`);
+    }
+  });
+
+  document.getElementById('viewWaitlistBtn').addEventListener('click', () => {
+    showToast('Loading 14 waitlisted applicants queue...');
+  });
+</script></main></div></body></html>
