@@ -32,11 +32,15 @@ async function loadEvent() {
   let eventId = params.get('id');
 
   try {
-    // If no ID provided in URL, grab the first available event from database
+    // If no ID provided in URL, grab an available open event where student is not yet registered
     if (!eventId) {
       const allRes = await apiFetch('/api/events');
       if (allRes?.events?.length > 0) {
-        eventId = allRes.events[0].id;
+        const user = getCurrentUser();
+        const meRes = await apiFetch(`/api/me/registrations?email=${encodeURIComponent(user.email)}`).catch(() => ({ registrations: [] }));
+        const userRegEventIds = new Set((meRes?.registrations || []).map((r) => r.eventId || r.event?.id));
+        const openEvent = allRes.events.find((e) => !userRegEventIds.has(e.id) && !e.isSoldOut) || allRes.events[0];
+        eventId = openEvent.id;
         window.history.replaceState({}, '', `event-details.html?id=${eventId}`);
       }
     }
@@ -124,10 +128,31 @@ function renderEventDetails(event) {
       <div class="flex-1">
         <strong class="font-bold block text-sm">Pass Active &amp; Confirmed</strong>
         <p class="mt-0.5 text-emerald-800">Your spot is secured! View or download your digital QR ticket pass in your student wallet.</p>
-        <a href="my-registrations.html" class="inline-block mt-2 font-bold text-primary hover:underline">Go to My Passes &rarr;</a>
+        <div class="flex items-center gap-3 mt-2.5">
+          <a href="my-registrations.html" class="px-3 py-1.5 rounded-lg bg-emerald-600 text-white font-bold text-xs hover:bg-emerald-700 transition-colors">
+            Go to My Passes &rarr;
+          </a>
+          <button id="cancelCurrentRegBtn" type="button" class="px-3 py-1.5 rounded-lg bg-rose-50 text-rose-700 font-bold text-xs hover:bg-rose-100 transition-colors border border-rose-200">
+            Cancel RSVP to Re-register
+          </button>
+        </div>
       </div>
     `;
     alertBox.classList.remove('hidden');
+
+    document.getElementById('cancelCurrentRegBtn')?.addEventListener('click', async () => {
+      const user = getCurrentUser();
+      const meRes = await apiFetch(`/api/me/registrations?email=${encodeURIComponent(user.email)}`);
+      const reg = meRes?.registrations?.find((r) => r.eventId === event.id || r.event?.id === event.id);
+      if (reg) {
+        await apiFetch(`/api/registrations/${reg.id}`, {
+          method: 'DELETE',
+          headers: { 'X-User-Email': user.email }
+        });
+        showToast('Registration cancelled. You can now register again.', 'info');
+        await loadEvent();
+      }
+    });
   } else if (isSoldOut) {
     submitBtn.disabled = true;
     submitBtn.className = 'w-full py-3.5 px-4 rounded-xl bg-surface-container text-outline font-bold text-sm cursor-not-allowed';

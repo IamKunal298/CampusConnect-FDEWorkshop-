@@ -353,17 +353,21 @@ function openQuickDrawer(event) {
     confirmBtn.innerHTML = '<span class="material-symbols-outlined text-[18px]">check_circle</span> Confirm Instant RSVP';
   }
 
-  drawer.classList.remove('pointer-events-none', 'opacity-0');
-  drawer.classList.add('opacity-100');
-  panel.classList.remove('translate-x-full');
+  drawer.classList.remove('hidden');
+  requestAnimationFrame(() => {
+    drawer.classList.remove('opacity-0');
+    panel.classList.remove('translate-x-full');
+  });
 }
 
 function closeQuickDrawer() {
   const drawer = document.getElementById('eventDrawer');
   const panel = document.getElementById('drawerPanel');
-  drawer.classList.add('pointer-events-none', 'opacity-0');
-  drawer.classList.remove('opacity-100');
+  drawer.classList.add('opacity-0');
   panel.classList.add('translate-x-full');
+  setTimeout(() => {
+    drawer.classList.add('hidden');
+  }, 300);
 }
 
 async function handleConfirmRsvp() {
